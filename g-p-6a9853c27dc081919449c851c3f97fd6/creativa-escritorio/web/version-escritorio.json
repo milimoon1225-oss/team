@@ -1,0 +1,16 @@
+{
+  "compilado": "2026-10-16T17:07:03.874Z",
+  "archivos": {
+    "assets/index-BZcjE5kq.js": "9831e30dce13d2a0742d073daea2fae49199ac21405db631fb2aec9efe08f828",
+    "assets/index-C_1f4M7J.css": "8b9797e7c5d31c5e5ff6cf95b91664906dbc99f5e019ee0ae213fc1b6f954b91",
+    "brand/app-192.png": "9eaa9702df2a86c5f6e396b557d1ef5309210d2287985afaeac135969709f3e5",
+    "brand/app-512.png": "8eb1f6dde3f6b7a6c75731d20feb929a4b3c9dee9dabebec07afbc4eb21e010a",
+    "brand/app-icon.svg": "6c49fe9243bd33bb507af628dd4abacf5d575edb849607e79c3c6d78da3527e7",
+    "brand/creativa-logo.png": "73022bb536e49aad3070bf91a5a481f632942106ce033feb9e7d0556e36def26",
+    "favicon.svg": "61bc9a161de58248288e6905425d7180f0624c2865007b97d763fdac12043a66",
+    "icons.svg": "b45fa506195cfcdef406ba9f0c77b36ddc1a7c224040926ec70abc2fdea7b93a",
+    "index.html": "4ed8fd97247365e28b77953ef4d04fffe37f30d3b39d9ddc8b18d080de658d95",
+    "manifest.webmanifest": "7d7bff91ea60beb06cf6d1b77447c1823cb823e58852b71bd8b0b96ac5b59f32",
+    "sw.js": "cec08b922db811d19694a2787fd3e6b441f2fd17e6a959716c5ddfcc02158a02"
+  }
+}

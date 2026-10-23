@@ -1,0 +1,74 @@
+.panel-shell { min-height: 100dvh; background: #f2f7fc; color: #203342; color-scheme: light; }
+.appearance-bar { display: flex; justify-content: flex-end; align-items: center; gap: 12px; margin-bottom: 20px; }
+.appearance-label { font-size: 12px; color: #617789; }
+.appearance-switch { display: inline-flex; padding: 4px; gap: 4px; background: #eaf0f8; border: 1px solid #d8e3ef; border-radius: 13px; }
+.appearance-switch button { display: flex; align-items: center; gap: 7px; min-height: 38px; padding: 8px 13px; border: 0; border-radius: 9px; color: #526a80; background: transparent; font-size: 13px; font-weight: 600; }
+.appearance-switch button[aria-pressed="true"] { background: #fff; color: #0646a6; box-shadow: 0 2px 7px #173b6810; }
+.appearance-switch button:focus-visible { outline: 3px solid #009fe3; outline-offset: 2px; }
+.appearance-switch button > span { font-size: 18px; line-height: 1; }
+
+/* Colores oscuros limitados a los paneles; se conserva el logo original. */
+[data-theme="oscuro"] { color-scheme: dark; --brand-ink: #e5edf8; --brand-blue: #8fc4ff; --brand-border: #2b3d54; --brand-shadow: 0 8px 30px #00000012; --text: #e5edf8; --text-soft: #a6b7cb; --border: #2b3d54; --blue: #8fc4ff; --cyan: #72cfff; --green: #80d9af; --orange: #ffcc80; --red: #ff9c99; background: #0e1623; color: #e5edf8; }
+[data-theme="oscuro"] .app { background: radial-gradient(ellipse at 85% 0, #14263d, transparent 55%), #0e1623; }
+[data-theme="oscuro"] .appearance-label { color: #a6b7cb; }
+[data-theme="oscuro"] .appearance-switch { background: #111d2d; border-color: #33475f; }
+[data-theme="oscuro"] .appearance-switch button { color: #aebfd3; }
+[data-theme="oscuro"] .appearance-switch button[aria-pressed="true"] { background: #284466; color: #e3f0ff; box-shadow: none; }
+[data-theme="oscuro"] .app .sidebar { background: #111d2d; border-color: #2b3d54; }
+[data-theme="oscuro"] .app .sidebar .logo-area { background: #fff; padding: 12px 8px; margin: 8px 0 28px; border-radius: 12px; border: 0; }
+[data-theme="oscuro"] .mobile-brand-bar img, [data-theme="oscuro"] .designer-brand img { background: #fff; border-radius: 12px; padding: 10px; }
+[data-theme="oscuro"] .app .menu-button { color: #b8c7d9; }
+[data-theme="oscuro"] .app .menu-button:hover { background: #1d3048; color: #dcecff; }
+[data-theme="oscuro"] .app .menu-button.active { background: #233c5b; border-color: #35597e; color: #b9dbff; }
+[data-theme="oscuro"] .app .menu-button.active > span, [data-theme="oscuro"] .brand-spark { color: #ff9edc; }
+[data-theme="oscuro"] .app .user-box span { color: #a6b7cb; }
+[data-theme="oscuro"] .app .avatar { background: #482440; color: #ffb2e4; }
+[data-theme="oscuro"] .app .header, [data-theme="oscuro"] .designer-page .header, [data-theme="oscuro"] .app .form-header { background: radial-gradient(ellipse at bottom right, #43284780, transparent 65%), linear-gradient(120deg, #132f43, #1b2840); border-color: #2c4661; }
+[data-theme="oscuro"] .app .date, [data-theme="oscuro"] .designer-page .date { color: #9ac9e7; }
+[data-theme="oscuro"] .app .header p, [data-theme="oscuro"] .designer-page .header p, [data-theme="oscuro"] .app .form-header p { color: #b3c6dc; }
+[data-theme="oscuro"] .hero-note { background: #233248; color: #e5edf8; }
+[data-theme="oscuro"] .hero-note > span { color: #b0c5dc; }
+[data-theme="oscuro"] .hero-note em { color: #ffa2dc; }
+[data-theme="oscuro"] .app .stat, [data-theme="oscuro"] .app .quick-card:not(.new-job), [data-theme="oscuro"] .app .jobs-list, [data-theme="oscuro"] .form-card, [data-theme="oscuro"] .brand-empty, [data-theme="oscuro"] .app .success-modal { background: #172334; color: #e5edf8; border-color: #2b3d54; }
+[data-theme="oscuro"] .app .stat span, [data-theme="oscuro"] .app .stat small, [data-theme="oscuro"] .app .section-title p, [data-theme="oscuro"] .brand-empty p, [data-theme="oscuro"] .designer-jobs p, [data-theme="oscuro"] .designer-brand > span, [data-theme="oscuro"] .designer-job-code { color: #acbdd0; }
+[data-theme="oscuro"] .app .stat-icon.blue, [data-theme="oscuro"] .quick-icon.jobs { background: #213d5d; color: #9accff; }
+[data-theme="oscuro"] .app .stat-icon.cyan { background: #173e4b; color: #7be1f4; }
+[data-theme="oscuro"] .app .stat-icon.green, [data-theme="oscuro"] .quick-icon.clients, [data-theme="oscuro"] .brand-empty > span { background: #482740; color: #ffb2e4; }
+[data-theme="oscuro"] .app .stat-icon.orange { background: #443820; color: #ffdb96; }
+[data-theme="oscuro"] .quick-icon.money { background: #203f38; color: #8de2b9; }
+[data-theme="oscuro"] .app .job-card, [data-theme="oscuro"] .app .job-main { border-color: #2b3d54; }
+[data-theme="oscuro"] .app .job-main strong { color: #b8d5f5; }
+[data-theme="oscuro"] .app .job-data label { color: #a6bbd2; }
+[data-theme="oscuro"] .app .alert { background: #30291d; border-color: #56452b; }
+[data-theme="oscuro"] .app .alert-icon { background: #4c3b20; color: #ffcf83; }
+[data-theme="oscuro"] .app .alert-text strong { color: #f3d39f; }
+[data-theme="oscuro"] .app .alert-text span { color: #cdbda6; }
+[data-theme="oscuro"] .see-jobs { color: #f3d39f; border-color: #6f5631; }
+[data-theme="oscuro"] .app .field input, [data-theme="oscuro"] .app .field select, [data-theme="oscuro"] .app .field textarea, [data-theme="oscuro"] .app .job-data select { background: #101b2b; border-color: #405670; color: #e5edf8; }
+[data-theme="oscuro"] input::placeholder, [data-theme="oscuro"] textarea::placeholder { color: #91a6bf; }
+[data-theme="oscuro"] .app .field label { color: #c6d5e6; }
+[data-theme="oscuro"] .app .form-card h2::before { background: #223e5e; color: #acd5ff; }
+[data-theme="oscuro"] .app .form-card:nth-child(2) h2::before { background: #482740; color: #ffb2e4; }
+[data-theme="oscuro"] .app .form-card:nth-child(3) h2::before { background: #173e4b; color: #8addeb; }
+[data-theme="oscuro"] .app .form-card:nth-child(4) h2::before { background: #443820; color: #ffdb96; }
+[data-theme="oscuro"] .app .upload-box { background: #12283b; border-color: #3d5972; }
+[data-theme="oscuro"] .app .payment-summary > div { background: #1c304a; border-color: #324864; }
+[data-theme="oscuro"] .app .payment-summary > div:nth-child(2) { background: #193a32; }
+[data-theme="oscuro"] .app .payment-summary > div:nth-child(3) { background: #3b3020; }
+[data-theme="oscuro"] .app .view-all, [data-theme="oscuro"] .app .field > button, [data-theme="oscuro"] .app .job-data button, [data-theme="oscuro"] .app .pedido-status button, [data-theme="oscuro"] .designer-page > button, [data-theme="oscuro"] .designer-page .header button, [data-theme="oscuro"] .access-card > button, [data-theme="oscuro"] .mobile-brand-bar button, [data-theme="oscuro"] .app .back-button, [data-theme="oscuro"] .app .cancel-button { color: #b8dbff; background: #1b3049; border-color: #3b5370; }
+[data-theme="oscuro"] .app .new-job, [data-theme="oscuro"] .app .bottom-add { background: linear-gradient(110deg, #0646a6, #0074b3); }
+[data-theme="oscuro"] .badge.pending { background: #473920; color: #ffda96; }
+[data-theme="oscuro"] .badge.designing { background: #213e5d; color: #a6d3ff; }
+[data-theme="oscuro"] .badge.ready { background: #492640; color: #ffb3e5; }
+[data-theme="oscuro"] .badge.delivered { background: #203e35; color: #a2e4c5; }
+[data-theme="oscuro"] .designer-jobs .pedido-description { background: #101c2d; color: #c2d3e7; }
+[data-theme="oscuro"] .pedido-error { background: #3e242c; border-color: #76505a; color: #ffc3c7; }
+[data-theme="oscuro"] .red { color: #ffa5a1; }
+[data-theme="oscuro"] .app .success-modal h2 { color: #e5edf8; }
+[data-theme="oscuro"] .app .success-modal p { color: #acbdd0; }
+[data-theme="oscuro"] .app .success-icon { background: #213e5d; color: #add4ff; }
+[data-theme="oscuro"] .app .bottom-nav { background: #111d2df5; border-color: #32445c; }
+[data-theme="oscuro"] .app .bottom-item { color: #a2b6cb; }
+[data-theme="oscuro"] .app .bottom-item.active { color: #9ed0ff; }
+[data-theme="oscuro"] .access-page { background: #0e1623; }
+@media (max-width: 550px) { .appearance-bar { margin-bottom: 16px; gap: 10px; }.appearance-switch button { min-height: 40px; }.appearance-label { font-size: 11px; } }

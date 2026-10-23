@@ -1,0 +1,17 @@
+{
+  "name": "creativa-impresos-codigo",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "npm --prefix caja-config-app run dev",
+    "build": "npm --prefix caja-config-app run build",
+    "test:db": "node scripts/pruebas-db.mjs",
+    "test:desktop": "npm --prefix creativa-escritorio test"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8",
+    "playwright": "1.62.1"
+  },
+  "engines": { "node": ">=22.12.0" }
+}

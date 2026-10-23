@@ -1,0 +1,50 @@
+[
+  {
+    "nombre": "clientes",
+    "status": 401,
+    "codigo": "42501",
+    "resultado": "rechaza acceso anónimo"
+  },
+  {
+    "nombre": "trabajos",
+    "status": 401,
+    "codigo": "42501",
+    "resultado": "rechaza acceso anónimo"
+  },
+  {
+    "nombre": "pagos",
+    "status": 401,
+    "codigo": "42501",
+    "resultado": "rechaza acceso anónimo"
+  },
+  {
+    "nombre": "pedidos",
+    "status": 401,
+    "codigo": "42501",
+    "resultado": "rechaza acceso anónimo"
+  },
+  {
+    "nombre": "caja",
+    "status": 401,
+    "codigo": "42501",
+    "resultado": "rechaza acceso anónimo"
+  },
+  {
+    "nombre": "configuracion",
+    "status": 401,
+    "codigo": "42501",
+    "resultado": "rechaza acceso anónimo"
+  },
+  {
+    "nombre": "reportes",
+    "status": 401,
+    "codigo": "42501",
+    "resultado": "rechaza acceso anónimo"
+  },
+  {
+    "nombre": "archivos",
+    "status": 200,
+    "codigo": null,
+    "resultado": "sin registros visibles"
+  }
+]

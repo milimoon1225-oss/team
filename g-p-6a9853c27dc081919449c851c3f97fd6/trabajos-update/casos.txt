@@ -1,0 +1,24 @@
+for (const width of [320,390,1440]) {
+  await page.setViewportSize({width,height:850});
+  await page.goto('http://localhost:5173/');
+  await page.getByRole('heading',{name:'Hola, L. Virginia'}).waitFor();
+  await page.locator(width<800?'.bottom-nav':'.menu').getByRole('button',{name:'Trabajos',exact:false}).click();
+  await page.getByRole('heading',{name:'Trabajos',exact:true}).waitFor();
+  assert.equal(await page.locator('.job-card').count(),1);
+  await page.getByLabel('Buscar pedido').fill('MUESTRA');
+  assert.equal(await page.locator('.job-card').count(),1);
+  await page.getByLabel('Estado',{exact:true}).selectOption('Listo');
+  await page.getByRole('heading',{name:'No encontramos pedidos'}).waitFor();
+  await page.getByRole('button',{name:'Limpiar filtros'}).click();
+  await page.locator('#filtrar-disenador').selectOption('sin-asignar');
+  assert.equal(await page.locator('.job-card').count(),0);
+  await page.locator('#filtrar-disenador').selectOption('d1');
+  assert.equal(await page.locator('.job-card').count(),1);
+  for (const theme of ['Claro','Oscuro']) {
+    await page.getByRole('button',{name:theme,exact:true}).click();
+    assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
+  }
+}
+assert.deepEqual(errors,[]);
+await browser.close();
+console.log('OK: navegación, búsqueda, filtros combinados, limpiar, estado vacío y sin desborde a 320/390/1440px en claro y oscuro; datos simulados.');

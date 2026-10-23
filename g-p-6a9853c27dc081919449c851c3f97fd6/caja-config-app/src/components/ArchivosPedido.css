@@ -1,0 +1,13 @@
+.pedido-attachments { grid-column: 1 / -1; min-width: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.attachment-label { width: 100%; font-size: 12px; color: var(--text-soft); }
+.pedido-attachments button, .file-selected button { padding: 9px 12px; border: 1px solid var(--border); border-radius: 10px; background: transparent; color: var(--blue); font: inherit; font-size: 13px; overflow-wrap: anywhere; max-width: 100%; }
+.attachment-preview { width: 100%; border: 1px solid var(--border); padding: 16px; border-radius: 12px; }
+.attachment-preview > div { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; }
+.attachment-preview strong { overflow-wrap: anywhere; min-width: 0; }
+.attachment-preview img { display: block; width: 100%; max-height: 360px; object-fit: contain; margin: 14px 0; }
+.attachment-preview a { display: inline-block; margin-top: 12px; color: var(--blue); }
+.app .upload-box { cursor: pointer; }
+.app .upload-box:focus-within { outline: 3px solid #009fe3; outline-offset: 3px; }
+.app .upload-box input { display: block; position: absolute; width: 1px; height: 1px; padding: 0; opacity: 0; overflow: hidden; }
+.file-selected { overflow-wrap: anywhere; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+[data-theme="oscuro"] .file-selected { color: #a2e4c5; background: #203e35; }

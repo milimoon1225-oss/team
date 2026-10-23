@@ -1,0 +1,532 @@
+{
+  "PAGES": [
+    [
+      "WF-01",
+      "Mapa de navegación y reglas del recorrido"
+    ],
+    [
+      "WF-02",
+      "Inicio - escritorio"
+    ],
+    [
+      "WF-03",
+      "Catálogo y resultados"
+    ],
+    [
+      "WF-04",
+      "Ficha configurable y archivo de referencia"
+    ],
+    [
+      "WF-05",
+      "Cotización y aceptación de propuesta"
+    ],
+    [
+      "WF-06",
+      "Carrito y total actualizado"
+    ],
+    [
+      "WF-07",
+      "Checkout, cobertura y pago"
+    ],
+    [
+      "WF-08",
+      "Confirmación y aprobación de arte"
+    ],
+    [
+      "WF-09",
+      "Seguimiento del pedido"
+    ],
+    [
+      "WF-10",
+      "Cuenta, historial y repetición de pedidos"
+    ],
+    [
+      "WF-11",
+      "Móvil - descubrir y configurar"
+    ],
+    [
+      "WF-12",
+      "Móvil - pagar, aprobar y seguir"
+    ]
+  ],
+  "DATA": {
+    "1": {
+      "subtitle": "Dos formas de pedir; una sola operación interna. Los botones de navegación del PDF permiten recorrer las pantallas.",
+      "notes": [
+        [
+          1,
+          "Venta estandarizada",
+          "La ficha confirma variante, cantidad y precio antes de añadir al carrito."
+        ],
+        [
+          2,
+          "Trabajo variable",
+          "La solicitud no implica compra. El cliente recibe y acepta un presupuesto completo."
+        ],
+        [
+          3,
+          "Regla de producción",
+          "Se exige el pago requerido confirmado y la aprobación explícita de la versión de arte."
+        ],
+        [
+          4,
+          "Datos y estados",
+          "Pago, archivo, arte y avance de trabajo se consultan de forma independiente."
+        ],
+        [
+          5,
+          "Alcance del diseño",
+          "Interfaz propuesta para clientes. La conexión al sistema de gestión se desarrollaría después."
+        ]
+      ]
+    },
+    "2": {
+      "subtitle": "Entrada al canal comercial: explorar productos de compra directa o solicitar un trabajo a medida.",
+      "notes": [
+        [
+          1,
+          "Mensaje principal",
+          "La portada explica qué se puede pedir y conecta con productos o soluciones."
+        ],
+        [
+          2,
+          "Dos entradas claras",
+          "Catálogo y cotización tienen recorridos distintos; no se promete precio fijo para todo."
+        ],
+        [
+          3,
+          "Categorías por validar",
+          "Los grupos son ejemplos de navegación. El catálogo definitivo depende de la oferta real."
+        ],
+        [
+          4,
+          "Confianza y ayuda",
+          "El pie incorporará contacto, políticas, cobertura y plazos comprobados del negocio."
+        ],
+        [
+          5,
+          "Versión móvil",
+          "La vista WF-11 adapta búsqueda, catálogo y configuración a una columna."
+        ]
+      ]
+    },
+    "3": {
+      "subtitle": "Resultados con filtros y disponibilidad de modalidad. No se mezclan productos con precio fijo y trabajos por cotizar.",
+      "notes": [
+        [
+          1,
+          "Buscar y filtrar",
+          "Los filtros reducen resultados sin perder la búsqueda. En móvil se abren en un panel."
+        ],
+        [
+          2,
+          "Compra directa",
+          "Presenta precio referencial y exige elegir la variante para obtener el importe exacto."
+        ],
+        [
+          3,
+          "A cotizar",
+          "No usa carrito inicial. Solicita detalles y espera la propuesta del negocio."
+        ],
+        [
+          4,
+          "Comparación sencilla",
+          "Cada tarjeta usa nombre, imagen, modalidad y una sola acción principal."
+        ],
+        [
+          5,
+          "Catálogo real pendiente",
+          "Nombres, materiales, fotos y precios de esta pantalla son solo ejemplos."
+        ]
+      ]
+    },
+    "4": {
+      "subtitle": "Ejemplo de producto estandarizable: configurar variante, revisar importe y adjuntar una referencia opcional.",
+      "notes": [
+        [
+          1,
+          "Precio según variante",
+          "Recalcular cantidad, material y acabado antes de añadir. Detallar descuentos si aplican."
+        ],
+        [
+          2,
+          "Carga de referencia",
+          "Validar tipo y tamaño. Mostrar nombre, estado, quitar/reemplazar y resultado de la carga."
+        ],
+        [
+          3,
+          "Detalle persistente",
+          "El carrito conserva las opciones y la referencia elegida; el precio se valida nuevamente."
+        ],
+        [
+          4,
+          "Si el archivo falla",
+          "Indicar la causa y permitir corregir sin borrar la configuración del producto."
+        ],
+        [
+          5,
+          "Preproducción",
+          "Revisión técnica y aprobación de arte son pasos posteriores; no se omiten al adjuntar."
+        ]
+      ]
+    },
+    "5": {
+      "subtitle": "El cliente solicita; el negocio cotiza. La propuesta final y su aceptación quedan registradas por versión.",
+      "notes": [
+        [
+          1,
+          "Solicitud sin cobro",
+          "Enviar detalles no confirma precio ni fecha. Se genera un número de cotización."
+        ],
+        [
+          2,
+          "Presupuesto final",
+          "Desglosa diseño, producción, impuestos aplicables y entrega antes de aceptar."
+        ],
+        [
+          3,
+          "Aceptación trazable",
+          "Registrar versión, fecha y condiciones. Si cambia el alcance, emitir otra propuesta."
+        ],
+        [
+          4,
+          "Datos por validar",
+          "Plazo, vigencia, pago requerido y cobertura son definidos por el negocio."
+        ],
+        [
+          5,
+          "Pasa a pedido",
+          "Al aceptar se continúa con el total pactado y el importe exigible; no se recalcula sin aviso."
+        ]
+      ]
+    },
+    "6": {
+      "subtitle": "La edición del carrito actualiza subtotales. El total definitivo incluye entrega e impuestos aplicables antes de pagar.",
+      "notes": [
+        [
+          1,
+          "Cambios en tiempo real",
+          "Cantidad, opciones o eliminación actualizan el subtotal. Mostrar confirmación del cambio."
+        ],
+        [
+          2,
+          "Importe transparente",
+          "No presentar el subtotal como total final. Calcular entrega y todo cargo antes del pago."
+        ],
+        [
+          3,
+          "Archivo separado",
+          "La referencia tiene su propio estado. Adjuntar o reemplazar no aprueba el arte."
+        ],
+        [
+          4,
+          "Carrito recuperable",
+          "Conservar cambios al volver al catálogo. Avisar si un precio o variante dejó de estar vigente."
+        ],
+        [
+          5,
+          "Cotización aceptada",
+          "Llega al checkout con la propuesta vigente; los cambios de alcance vuelven a cotización."
+        ]
+      ]
+    },
+    "7": {
+      "subtitle": "Se confirma cobertura y total final antes de elegir el pago. Los estados del pago no cambian por sí solos el avance del trabajo.",
+      "notes": [
+        [
+          1,
+          "Entrega primero",
+          "Si no hay cobertura, ofrecer recojo u otra dirección. No permitir pagar sin resolverlo."
+        ],
+        [
+          2,
+          "Total y comprobante",
+          "Elegir boleta o factura. Para factura, solicitar RUC, razón social y dirección fiscal según corresponda."
+        ],
+        [
+          3,
+          "Métodos por contratar",
+          "Las opciones son propuestas. Tarjeta usa proveedor seguro; no se guardan datos sensibles."
+        ],
+        [
+          4,
+          "Pendiente o rechazado",
+          "Mostrar estado y siguiente paso. Permitir corregir o cambiar método sin crear otro pedido."
+        ],
+        [
+          5,
+          "Verificación real",
+          "Un comprobante adjunto no confirma un pago. Esperar validación del proveedor o del negocio."
+        ]
+      ]
+    },
+    "8": {
+      "subtitle": "La compra genera un pedido consultable. La producción permanece bloqueada hasta cumplir las condiciones de pago y arte.",
+      "notes": [
+        [
+          1,
+          "Confirmación clara",
+          "Informar código, resumen y estado real del pago. Si sigue pendiente, mostrarlo aquí."
+        ],
+        [
+          2,
+          "Aprobación explícita",
+          "Guardar versión, identidad y fecha. La casilla no debe venir marcada."
+        ],
+        [
+          3,
+          "Correcciones",
+          "Recoger observaciones y emitir una nueva versión. Requiere nueva aprobación."
+        ],
+        [
+          4,
+          "Archivo observado",
+          "Dar motivo y botón para reenviar. Recibir un archivo no habilita impresión."
+        ],
+        [
+          5,
+          "Regla de inicio",
+          "Solo cuando se cumple el pago requerido y se aprueba el arte vigente se habilita producción."
+        ]
+      ]
+    },
+    "9": {
+      "subtitle": "El cliente consulta cada dimensión del pedido y la acción pendiente. Los hitos operativos se alimentarán del sistema interno.",
+      "notes": [
+        [
+          1,
+          "Estados independientes",
+          "Pago, arte, entrega y trabajo muestran su situación específica y consistente."
+        ],
+        [
+          2,
+          "Hitos propuestos",
+          "El sistema actual usa otros estados internos; se debe acordar su equivalencia al integrar."
+        ],
+        [
+          3,
+          "Atención contextual",
+          "La consulta conserva el código del pedido y permite aportar una observación."
+        ],
+        [
+          4,
+          "Envío o recojo",
+          "Para envío: despacho y enlace de seguimiento si existe. Para recojo: punto y horario."
+        ],
+        [
+          5,
+          "Fechas honestas",
+          "Separar estimación de fecha confirmada. Actualizar y avisar cuando cambie el plazo."
+        ]
+      ]
+    },
+    "10": {
+      "subtitle": "Área del cliente con acceso a pedidos propios. Repetir un trabajo siempre exige validar condiciones actuales.",
+      "notes": [
+        [
+          1,
+          "Cuenta y privacidad",
+          "Mostrar solo datos del cliente autenticado. Permitir revisar y corregir información."
+        ],
+        [
+          2,
+          "Historial útil",
+          "Cada tarjeta resume pago y trabajo por separado; el detalle muestra documentos y arte."
+        ],
+        [
+          3,
+          "Acción pendiente",
+          "Archivo observado lleva a corregirlo; pago pendiente lleva a ver su validación."
+        ],
+        [
+          4,
+          "Repetición revisada",
+          "Copiar especificaciones y pedir nueva confirmación de precio, entrega y arte."
+        ],
+        [
+          5,
+          "Acceso al pedido",
+          "La alternativa sin cuenta deberá usar un enlace seguro con acceso limitado y vencimiento."
+        ]
+      ]
+    },
+    "11": {
+      "subtitle": "Recorrido móvil de compra directa: inicio > catálogo > ficha. Cada paso conserva el contexto y ofrece una acción visible.",
+      "notes": [
+        [
+          1,
+          "Inicio en una columna",
+          "Dos entradas visibles: comprar productos definidos o solicitar cotización."
+        ],
+        [
+          2,
+          "Filtros compactos",
+          "Abrir panel de filtros y conservar selección al volver a los resultados."
+        ],
+        [
+          3,
+          "Configurar sin perderse",
+          "Opciones apiladas, total actualizado y botón principal al final de la vista."
+        ],
+        [
+          4,
+          "Carga desde el móvil",
+          "Permitir seleccionar archivo o imagen. Mostrar progreso y error recuperable."
+        ],
+        [
+          5,
+          "Accesibilidad",
+          "Etiquetas visibles, botones amplios y mensajes junto al campo correspondiente."
+        ]
+      ]
+    },
+    "12": {
+      "subtitle": "Recorrido móvil tras la compra: resolver pago, aprobar la versión de arte y consultar el avance del trabajo.",
+      "notes": [
+        [
+          1,
+          "Pago sin duplicaciones",
+          "Revisar el intento existente. Si falla, permitir reintentar manteniendo el mismo pedido."
+        ],
+        [
+          2,
+          "Aprobar o corregir",
+          "Ver el arte ampliado; la aprobación se vincula a una versión identificada."
+        ],
+        [
+          3,
+          "Seguimiento resumido",
+          "Pago, arte y trabajo siguen visibles como estados distintos."
+        ],
+        [
+          4,
+          "Producción condicionada",
+          "Un pago pendiente o arte sin aprobar bloquea el inicio, también desde móvil."
+        ],
+        [
+          5,
+          "Recorrido completo",
+          "Confirmar cobertura y costo antes de pagar; notificar correcciones y cambios relevantes."
+        ]
+      ]
+    }
+  },
+  "screens": [
+    {
+      "code": "WF-01",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-01.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-02",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-02.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-03",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-03.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-04",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-04.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-05",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-05.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-06",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-06.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-07",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-07.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-08",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-08.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-09",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-09.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-10",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-10.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-11",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-11.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    },
+    {
+      "code": "WF-12",
+      "path": "C:\\Users\\MILAGROS\\.codex\\.chatgpt-projects\\g-p-6a9853c27dc081919449c851c3f97fd6\\outputs\\ecommerce-creativa\\qa\\wireframe-word\\screens\\screen-12.png",
+      "width_px": 2229,
+      "height_px": 1629,
+      "width_pt": 535.2755905511812,
+      "height_pt": 391.2722458365271,
+      "dpi": 300
+    }
+  ],
+  "region": {
+    "left_pt": 30,
+    "top_pt": 145,
+    "width_pt": 535.2755905511812,
+    "height_pt": 391.2722458365271
+  },
+  "developer_logo": "C:\\Users\\MILAGROS\\Downloads\\Logotipo tecnológico STAR117 en azul.png",
+  "client_logo": "C:\\Users\\MILAGROS\\Downloads\\Imagen de ChatGPT 25 sept 2026, 12_08_13.png"
+}

@@ -2,13 +2,13 @@
 
 ## Usuario de Windows
 
-1. Obtén `Creativa-Operaciones-0.3.0-x64-Instalador.exe` de la entrega o Release publicada.
-2. Ejecuta el instalador con tu usuario de Windows y abre Creativa desde el acceso directo.
+1. Descarga `Creativa-Operaciones-0.3.0-x64-Portable.exe` de la [Release de escritorio](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.0).
+2. Ejecuta el portable con tu usuario de Windows. No requiere instalar Node.js.
 3. Elige un responsable y PIN, o explora primero la demostración.
 4. Crea un pedido de prueba, bloquea y vuelve a abrir el espacio para comprobar el guardado.
 5. Descarga un respaldo cifrado desde Configuración y guárdalo fuera de la computadora.
 
-La alternativa `Creativa-Operaciones-0.3.0-x64-Portable.exe` abre sin instalar. Guarda sus datos en el perfil del usuario de Windows, no junto al ejecutable: copiar solo el `.exe` no traslada los pedidos.
+La edición portable abre sin instalar. Guarda sus datos en el perfil del usuario de Windows, no junto al ejecutable: copiar solo el `.exe` no traslada los pedidos.
 
 Los ejecutables de esta configuración no tienen firma comercial. Windows puede mostrar una advertencia de editor desconocido. Para una distribución empresarial conviene firmar el instalador y verificarlo en una máquina Windows limpia.
 

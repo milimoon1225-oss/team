@@ -6,7 +6,9 @@ Los datos de trabajo se guardan cifrados en esta computadora. No necesita una cu
 
 ## Abrir la aplicación
 
-Para usuarios finales, la entrega se realiza mediante el instalador de Windows o la edición portable `.exe`. No requieren Node.js. Los ejecutables se generan en `release/` y se adjuntan a una **GitHub Release**, separados del historial del código. Preparar esta rama no publica una Release automáticamente.
+Descarga el [portable para Windows x64 (.exe)](https://github.com/milimoon1225-oss/team/releases/download/desktop-v0.3.0/Creativa-Operaciones-0.3.0-x64-Portable.exe) desde la [Release de escritorio 0.3.0](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.0). No requiere Node.js. Incluye el archivo SHA256SUMS.txt para verificar la descarga.
+
+Esta entrega es preliminar: el portable se generó y se revisó su paquete, pero todavía debe probarse en Windows real. El instalador NSIS se podrá generar mediante el flujo Windows del repositorio. Los ejecutables se distribuyen como adjuntos de la Release; el código fuente permanece visible en esta rama.
 
 En el primer inicio, elige el responsable y un PIN de 6 a 12 dígitos, o pulsa **Explorar demostración**. Guarda el PIN y realiza respaldos desde Configuración.
 
@@ -21,7 +23,7 @@ npm ci
 npm start
 ```
 
-La rama debe publicarse antes de poder clonarla desde GitHub. En la copia de trabajo actual basta con entrar a su directorio y ejecutar `npm ci` y `npm start`.
+Si ya tienes esta copia de trabajo, entra al directorio que contiene `package.json` y ejecuta `npm ci` y `npm start`.
 
 `npm start` compila la interfaz y abre una ventana Electron. React dibuja las pantallas dentro de la aplicación; el usuario final no inicia un servidor ni abre una dirección en el navegador.
 

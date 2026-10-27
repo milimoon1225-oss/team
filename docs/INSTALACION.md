@@ -2,7 +2,7 @@
 
 ## Usuario de Windows
 
-1. Descarga `Creativa-Operaciones-0.3.0-x64-Portable.exe` de la [Release de escritorio](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.0).
+1. Descarga `Creativa-Operaciones-0.3.0-x64-Portable.exe` desde `distribucion/windows/` de esta misma rama, o desde la [Release de escritorio](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.0).
 2. Ejecuta el portable con tu usuario de Windows. No requiere instalar Node.js.
 3. Elige un responsable y PIN, o explora primero la demostración.
 4. Crea un pedido de prueba, bloquea y vuelve a abrir el espacio para comprobar el guardado.
@@ -43,7 +43,7 @@ npm run dist:win
 npm run checksums
 ```
 
-`release/` contendrá los ejecutables y `SHA256SUMS.txt`. No deben añadirse al commit. Compilar Windows desde Linux puede requerir herramientas auxiliares; la ruta recomendada y automatizada es el flujo Windows del repositorio.
+`release/` contendrá los ejecutables y `SHA256SUMS.txt`. Las salidas de `release/` se ignoran en Git. Esta entrega incluye una copia explícita del portable y su SHA-256 en `distribucion/windows/`. Compilar Windows desde Linux puede requerir herramientas auxiliares; la ruta recomendada y automatizada es el flujo Windows del repositorio.
 
 En GitHub: abre Actions → **Escritorio Windows** → Run workflow sobre la rama publicada. Descarga el artefacto generado. Para entregar al público, crea una Release y adjunta los `.exe` y el archivo SHA-256. Ese procedimiento requiere publicar previamente la rama; no se ejecuta por reorganizar las fuentes.
 

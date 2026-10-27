@@ -1,0 +1,37 @@
+import { createRequire } from 'node:module';
+import assert from 'node:assert/strict';
+import { mkdir,writeFile } from 'node:fs/promises';
+const {chromium}=createRequire(import.meta.url)('playwright');
+const browser=await chromium.launch({headless:true});
+const output=new URL('../test-output/',import.meta.url),errors=[],checks=[],external=[];
+const click=(page,name)=>page.getByRole('button',{name,exact:true}).click();
+try {
+  await mkdir(output,{recursive:true});const context=await browser.newContext({viewport:{width:1440,height:1050}});
+  await context.route('https://**/*',route=>{external.push(route.request().url());return route.abort();});
+  await context.route('http://127.0.0.1:11434/**',route=>{external.push(route.request().url());return route.abort();});
+  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));await page.goto('http://127.0.0.1:5177/');
+  const began=Date.now();await click(page,'Explorar demostración');await page.locator('.w-order').nth(18).waitFor();const preparationMs=Date.now()-began;
+  assert.equal(await page.locator('.w-order').count(),19);assert.equal(await page.locator('.w-sample-image img').count(),17);
+  await click(page,'Ver muestras 3D');assert.equal(await page.locator('.w-order').count(),11);
+  const images=await page.locator('.w-sample-image img').evaluateAll(items=>items.map(i=>i.src));assert.equal(new Set(images).size,11);assert.ok(images.every(src=>src.startsWith('data:image/webp;base64,')));
+  for(const image of await page.locator('.w-sample-image img').all()){await image.scrollIntoViewIfNeeded();await image.evaluate(i=>i.decode());}await page.evaluate(()=>scrollTo(0,0));
+  await page.screenshot({path:new URL('muestrario-tarjetas.png',output).pathname,fullPage:true});
+  checks.push('19 pedidos, 17 trabajos con vista 3D y galería de 11 diseños distintos con miniaturas locales');
+  await page.locator('.w-order').filter({hasText:'Valeria Mamani'}).click();const dialog=page.getByRole('dialog');await page.locator('.p3-stage[data-status=ready]').waitFor();
+  await dialog.getByLabel('Versión 3D guardada').getByRole('option',{name:/Versión 3D 2/}).waitFor({state:'attached'});
+  await dialog.getByRole('button',{name:'Vista plana',exact:true}).click();assert.equal(await dialog.locator('.p3-flat img').count(),4);
+  assert.equal(new Set(await dialog.locator('.p3-flat img').evaluateAll(items=>items.map(i=>i.src))).size,4);
+  await page.screenshot({path:new URL('muestra-invitacion-celestial.png',output).pathname});
+  await dialog.getByRole('button',{name:'Vista 3D',exact:true}).click();await dialog.getByLabel('Comparar con',{exact:true}).selectOption({index:1});await page.locator('.p3-stage[data-status=ready]').nth(1).waitFor();
+  assert.equal(await dialog.locator('.p3-stage canvas').count(),2);await click(page,'Cerrar pedido');
+  checks.push('invitación con cuatro caras distintas; dos acabados guardados y comparación 3D');
+  await page.locator('.w-order').filter({hasText:'Estudio Luna'}).click();await page.locator('.p3-stage[data-status=ready]').waitFor();await dialog.getByRole('button',{name:'Vista plana',exact:true}).click();assert.equal(await dialog.locator('.p3-flat img').count(),2);
+  await dialog.getByLabel('Diseño de ejemplo',{exact:true}).selectOption('dulce-miel');await click(page,'Cargar diseño de ejemplo');await dialog.getByText('Preparación sin guardar. Guarda una versión antes de mostrarla al cliente.',{exact:true}).waitFor();await click(page,'Guardar versión 3D');await dialog.getByLabel('Versión 3D guardada').getByRole('option',{name:/Versión 3D 2/}).waitFor({state:'attached'});await click(page,'Cerrar pedido');
+  checks.push('tarjeta con frente y reverso; selector permite cargar otro estilo y guardar una nueva versión');
+  await context.setOffline(true);await page.locator('.w-order').filter({hasText:'Familia Flores'}).click();await page.locator('.p3-stage[data-status=ready]').waitFor();await click(page,'Cerrar pedido');assert.deepEqual(external,[]);
+  await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:new URL('muestrario-movil.png',output).pathname});
+  await click(page,'Salir de demostración');await page.getByRole('heading',{name:'Preparar esta computadora',exact:true}).waitFor();
+  const databases=await page.evaluate(()=>indexedDB.databases());assert.ok(databases.every(db=>db.name!=='creativa-operaciones-v2')||await page.evaluate(()=>new Promise(resolve=>{const r=indexedDB.open('creativa-operaciones-v2',1);r.onsuccess=()=>{const db=r.result,get=db.transaction('vault').objectStore('vault').get('main');get.onsuccess=()=>{resolve(!get.result);db.close();};};})));
+  checks.push('muestras disponibles sin conexión, sin llamadas al modelo; móvil sin desbordamiento y sin crear copia real');
+  assert.deepEqual(errors,[]);await writeFile(new URL('samples-result.json',output),JSON.stringify({result:'PASS',preparationMs,checks},null,2));console.log(checks.join('\n'));await context.close();
+}catch(error){console.error('Errores:',errors);for(const ctx of browser.contexts())for(const page of ctx.pages())console.error((await page.locator('body').innerText()).slice(-3500));throw error;}finally{await browser.close();}

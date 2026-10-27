@@ -1,0 +1,22 @@
+// Catálogo ilustrativo: textos ficticios y estilos disponibles sin red.
+const BASE_SAMPLES = [
+  { id:'boda-botanica', model:'bifold', name:'Boda botánica', category:'Boda', title:['María','& José'], subtitle:'CELEBRAMOS NUESTRA HISTORIA', event:'20 · DICIEMBRE · 2026', detail:'Ceremonia 11:00 · Recepción 13:00', place:'Salón de ejemplo · Juliaca', message:['El mejor capítulo','es el que escribimos','juntos.'], motif:'botanical', bg:'#f6f3e9', ink:'#344e45', accent:'#b79a68', soft:'#d8e1d2', paper:'textured', finish:'matte', tags:['boda','floral','verde','botánico','marfil'] },
+  { id:'quince-celestial', model:'bifold', name:'Quince años celestial', category:'Quince años', title:['Valeria','Mis quince'], subtitle:'UNA NOCHE PARA BRILLAR', event:'12 · DICIEMBRE · 2026', detail:'Recepción 19:00 · Celebración 20:00', place:'Salón de ejemplo · Juliaca', message:['Los sueños tienen','su propia luz.','Gracias por ser parte.'], motif:'stars', bg:'#14283e', ink:'#f7efdc', accent:'#d2b778', soft:'#2a4260', paper:'smooth', finish:'satin', tags:['quince años','azul','dorado','estrellas'] },
+  { id:'bautizo-cielo', model:'bifold', name:'Bautizo cielo', category:'Bautizo', title:['Mateo','Mi bautizo'], subtitle:'UN DÍA LLENO DE AMOR', event:'06 · DICIEMBRE · 2026', detail:'Ceremonia 10:00 · Compartir 12:00', place:'Lugar de ejemplo · Juliaca', message:['Con amor y alegría,','te invitamos a celebrar','un nuevo comienzo.'], motif:'clouds', bg:'#f0f6fb', ink:'#41627e', accent:'#b49b74', soft:'#d6e6f3', paper:'textured', finish:'matte', tags:['bautizo','celeste','nubes','infantil'] },
+  { id:'graduacion-andina', model:'bifold', name:'Graduación elegante', category:'Graduación', title:['Promoción','Horizonte 2026'], subtitle:'EL FUTURO NOS ESPERA', event:'18 · DICIEMBRE · 2026', detail:'Acto 16:00 · Celebración 18:00', place:'Auditorio de ejemplo · Juliaca', message:['Cada paso cuenta.','Cada meta abre','un nuevo camino.'], motif:'deco', bg:'#243449', ink:'#f3efe3', accent:'#cba86c', soft:'#364b62', paper:'smooth', finish:'satin', tags:['graduación','azul','elegante','geométrico'] },
+  { id:'cafe-altiplano', model:'card', name:'Café Altiplano', category:'Gastronomía', title:['CAFÉ','ALTIPLANO'], subtitle:'ORIGEN · AROMA · ENCUENTRO', contact:'Elena · Atención al cliente', email:'cafe@ejemplo.test', place:'Juliaca · Perú', motif:'mountains', bg:'#183d3e', ink:'#f6eddb', accent:'#d1ae73', soft:'#2c5653', paper:'textured', finish:'matte', tags:['café','verde','montañas','presentación'] },
+  { id:'estudio-luna', model:'card', name:'Estudio Luna', category:'Belleza', title:['Estudio','Luna'], subtitle:'BELLEZA CON IDENTIDAD', contact:'Lucía · Estilista de ejemplo', email:'luna@ejemplo.test', place:'Juliaca · Perú', motif:'arches', bg:'#f4e9e4', ink:'#60484d', accent:'#ae7b69', soft:'#e3cdc5', paper:'smooth', finish:'satin', tags:['belleza','rosa','minimalista','presentación'] },
+  { id:'optica-andina', model:'card', name:'Óptica Andina', category:'Salud', title:['ÓPTICA','ANDINA'], subtitle:'UNA NUEVA FORMA DE VER', contact:'Diego · Asesor de ejemplo', email:'optica@ejemplo.test', place:'Juliaca · Perú', motif:'rings', bg:'#edf6f4', ink:'#174c53', accent:'#28858b', soft:'#c8e4e0', paper:'smooth', finish:'gloss', tags:['óptica','salud','turquesa','presentación'] },
+  { id:'dulce-miel', model:'card', name:'Dulce Miel', category:'Repostería', title:['Dulce','Miel'], subtitle:'PEQUEÑOS MOMENTOS, GRANDES SABORES', contact:'Rosa · Repostera de ejemplo', email:'dulce@ejemplo.test', place:'Juliaca · Perú', motif:'dots', bg:'#fbf1dd', ink:'#6b4939', accent:'#be8154', soft:'#eed4bd', paper:'textured', finish:'matte', tags:['repostería','crema','cálido','presentación'] },
+];
+export const SAMPLE_DESIGNS=Object.freeze([...BASE_SAMPLES,
+  {...BASE_SAMPLES[0],id:'plana-botanica',model:'invitation',name:'Invitación plana botánica',subtitle:'UNA INVITACIÓN PARA RECORDAR',tags:[...BASE_SAMPLES[0].tags,'plana']},
+  {...BASE_SAMPLES[3],id:'triptico-graduacion',model:'trifold',name:'Graduación en tríptico',subtitle:'EL CAMINO QUE COMPARTIMOS',tags:[...BASE_SAMPLES[3].tags,'tríptico']},
+  {...BASE_SAMPLES[0],id:'doblepuerta-boda',model:'gatefold',name:'Boda doble puerta',subtitle:'ABRE UNA NUEVA HISTORIA',tags:[...BASE_SAMPLES[0].tags,'doble puerta']},
+]);
+
+export function sampleDesign(model, id) {
+  const sample = SAMPLE_DESIGNS.find(item => item.model === model && (!id || item.id === id));
+  if (!sample) throw new Error('Diseño de ejemplo no disponible para este modelo.');
+  return sample;
+}

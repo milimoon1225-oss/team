@@ -1,0 +1,22 @@
+name: Calidad y arquitectura
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/escritorio-local]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  verificar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build

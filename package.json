@@ -1,0 +1,89 @@
+{
+  "name": "creativa-operaciones",
+  "productName": "Creativa Operaciones",
+  "version": "0.3.0",
+  "private": true,
+  "description": "Gestión de imprenta para escritorio con datos locales cifrados",
+  "author": "Creativa Impresos",
+  "type": "module",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "start": "npm run build && node scripts/start-desktop.cjs",
+    "dev": "vite --host 127.0.0.1",
+    "build": "vite build",
+    "lint": "eslint src test",
+    "test": "node --test test/*.test.mjs test/desktop/*.test.mjs",
+    "test:desktop": "npm run build && node test/desktop/aplicacion.mjs",
+    "test:samples": "npm run build && node test/desktop/aplicacion.mjs --samples",
+    "dist:win": "npm run build && electron-builder --win nsis portable --x64 --publish never",
+    "dist:linux": "npm run build && electron-builder --linux AppImage --x64 --publish never",
+    "checksums": "node scripts/checksums.mjs",
+    "dist:portable": "npm run build && electron-builder --win portable --x64 --publish never"
+  },
+  "dependencies": {
+    "pdfjs-dist": "^6.4.299",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "three": "^0.185.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@vitejs/plugin-react": "^6.1.1",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "globals": "^17.12.0",
+    "vite": "^8.3.0",
+    "electron": "44.8.0",
+    "electron-builder": "26.15.3",
+    "playwright": "1.62.1"
+  },
+  "build": {
+    "appId": "pe.creativaimpresos.operaciones",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "desktop/**/*.cjs",
+      "dist/**/*",
+      "src/infrastructure/assistant/ollama-client.js",
+      "package.json",
+      "!node_modules/**/*"
+    ],
+    "artifactName": "Creativa-Operaciones-${version}-${arch}.${ext}",
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ],
+      "signAndEditExecutable": false
+    },
+    "nsis": {
+      "artifactName": "Creativa-Operaciones-${version}-${arch}-Instalador.${ext}",
+      "oneClick": false,
+      "perMachine": false,
+      "allowElevation": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "deleteAppDataOnUninstall": false,
+      "installerLanguages": [
+        "es_ES"
+      ],
+      "language": "3082"
+    },
+    "portable": {
+      "artifactName": "Creativa-Operaciones-${version}-${arch}-Portable.${ext}"
+    },
+    "npmRebuild": false,
+    "linux": {
+      "target": [
+        "AppImage"
+      ],
+      "category": "Office"
+    }
+  },
+  "engines": {
+    "node": ">=22.12.0"
+  }
+}

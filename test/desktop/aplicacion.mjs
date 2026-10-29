@@ -10,7 +10,7 @@ const root=fileURLToPath(new URL('../../',import.meta.url));
 const output=path.join(root,'test-output');await mkdir(output,{recursive:true});
 const environment={...process.env,CREATIVA_TEST_USER_DATA:path.join(output,`perfil-${Date.now()}`)};
 delete environment.ELECTRON_RUN_AS_NODE;
-const app=await electron.launch({executablePath:path.join(root,'node_modules/electron/dist',process.platform==='win32'?'electron.exe':'electron'),args:[...(process.platform==='linux'?['--no-sandbox','--ozone-platform=headless','--enable-unsafe-swiftshader']:[]),root],env:environment,timeout:30000});
+const app=await electron.launch({executablePath:require('electron'),args:[...(process.platform==='linux'?['--no-sandbox','--ozone-platform=headless','--enable-unsafe-swiftshader']:[]),root],env:environment,timeout:30000});
 try{
  const page=await app.firstWindow();await app.context().route('https://**/*',route=>route.abort());
  await page.getByRole('heading',{name:'Preparar esta computadora'}).waitFor();

@@ -21,10 +21,10 @@ npm ci
 npm start
 ```
 
-Si el entorno de desarrollo ha deshabilitado los scripts de instalación, completa la descarga de Electron:
+La versión utilizada de Electron puede descargar su motor en el primer arranque. Para preparar explícitamente ese motor antes de abrir la aplicación o ejecutar las pruebas:
 
 ```sh
-node node_modules/electron/install.js
+npm run setup:desktop
 ```
 
 `npm run dev` sirve únicamente para desarrollo de pantallas. La entrega de escritorio se abre con `npm start` o con el ejecutable empaquetado.
@@ -35,6 +35,7 @@ En Windows x64:
 
 ```sh
 npm ci
+npm run setup:desktop
 npm run lint
 npm test
 npm run test:desktop
@@ -66,3 +67,11 @@ Comprueba en Windows: instalación y portable, creación de pedido, cobro y sald
 Se generó el portable Windows x64 de la versión 0.3.0 y su suma SHA-256. Se revisó el contenido del paquete y se validaron los flujos principales y las muestras mediante Electron en Linux. El ejecutable Windows aún necesita una prueba en Windows real.
 
 El instalador NSIS no terminó de generarse en este equipo Linux porque no tiene Wine. No se conserva el archivo parcial como entrega. Puede generarse con `npm run dist:win` en Windows o mediante el flujo automatizado. Para generar únicamente el portable: `npm run dist:portable`.
+
+## Validación del asistente en la entrega 0.3.1
+
+La aplicación conserva las funciones de gestión aunque falte Ollama. Para activar IA en la computadora de destino: instala Ollama, abre su servicio y ejecuta `ollama pull qwen3.5:4b` una vez con internet. El modelo no está dentro del `.exe`; después de descargarlo se utiliza localmente.
+
+Desde Asistente → Más opciones y ayuda → Comprobar modelo local se realiza una inferencia real. Detectar el nombre del modelo instalado ya no se presenta como prueba suficiente de funcionamiento. El tiempo mostrado corresponde a la comprobación en esa computadora.
+
+La integración automatizada y sus resultados distinguen pruebas del código, del paquete y del portable. Consulta `test-output/` o el artefacto de evidencia del flujo Windows. La versión anterior 0.3.0 no incorpora este diagnóstico nuevo.

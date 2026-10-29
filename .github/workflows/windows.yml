@@ -10,7 +10,7 @@ permissions:
 jobs:
   windows:
     runs-on: windows-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
@@ -18,12 +18,23 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
+      - run: npm run setup:desktop
       - run: npm run lint
       - run: npm test
       - run: npm run test:desktop
       - run: npm run test:samples
       - run: npm run dist:win
       - run: npm run checksums
+      - name: Preparar Ollama y Qwen3.5 de 4B reales
+        shell: pwsh
+        run: ./scripts/preparar-ollama-windows.ps1
+      - name: Probar el exe empaquetado con el modelo real
+        run: npm run test:package:model
+      - name: Probar el portable distribuible con el modelo real
+        shell: pwsh
+        run: |
+          $env:CREATIVA_PACKAGED_EXE = (Resolve-Path 'release/Creativa-Operaciones-0.3.1-x64-Portable.exe').Path
+          npm run test:package:model
       - uses: actions/upload-artifact@v4
         with:
           name: Creativa-Operaciones-Windows
@@ -32,3 +43,11 @@ jobs:
             release/SHA256SUMS.txt
           if-no-files-found: error
           retention-days: 30
+      - name: Conservar evidencia de pruebas y diagnóstico
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Evidencia-Escritorio-Windows
+          path: test-output/
+          if-no-files-found: warn
+          retention-days: 14

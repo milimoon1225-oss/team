@@ -1,7 +1,7 @@
 {
   "name": "creativa-operaciones",
   "productName": "Creativa Operaciones",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "description": "Gestión de imprenta para escritorio con datos locales cifrados",
   "author": "Creativa Impresos",
@@ -18,7 +18,10 @@
     "dist:win": "npm run build && electron-builder --win nsis portable --x64 --publish never",
     "dist:linux": "npm run build && electron-builder --linux AppImage --x64 --publish never",
     "checksums": "node scripts/checksums.mjs",
-    "dist:portable": "npm run build && electron-builder --win portable --x64 --publish never"
+    "dist:portable": "npm run build && electron-builder --win portable --x64 --publish never",
+    "setup:desktop": "node node_modules/electron/install.js",
+    "test:package": "node test/desktop/paquete.mjs",
+    "test:package:model": "node test/desktop/paquete.mjs --real-model"
   },
   "dependencies": {
     "pdfjs-dist": "^6.4.299",

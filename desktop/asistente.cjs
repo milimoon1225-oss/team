@@ -14,8 +14,8 @@ function crearAsistente({ autorizado, getClient }) {
       assertSender(event);
       if (!value || typeof value !== 'object' || Array.isArray(value) ||
           typeof value.id !== 'string' || !/^[a-f0-9-]{36}$/.test(value.id) ||
-          !['status', 'interpret', 'analyze'].includes(value.action) ||
-          Object.keys(value).sort().join(',') !== (value.action === 'status' ? 'action,id' : value.action === 'analyze' ? 'action,id,images,payload,task' : 'action,id,model,question')) {
+          !['status', 'verify', 'interpret', 'analyze'].includes(value.action) ||
+          Object.keys(value).sort().join(',') !== (['status','verify'].includes(value.action) ? 'action,id' : value.action === 'analyze' ? 'action,id,images,payload,task' : 'action,id,model,question')) {
         throw new Error('Solicitud de asistente no válida.');
       }
       if (value.action === 'interpret' && (typeof value.question !== 'string' || !value.question.trim() || value.question.length > 1000 ||
@@ -27,7 +27,7 @@ function crearAsistente({ autorizado, getClient }) {
       try {
         const client = await getClient();
         active.controller.signal.throwIfAborted();
-        const result = value.action === 'analyze' ? await client.analyze({ task: value.task, payload: value.payload, images: value.images, signal: active.controller.signal }) : value.action === 'status'
+        const result = value.action === 'analyze' ? await client.analyze({ task: value.task, payload: value.payload, images: value.images, signal: active.controller.signal }) : value.action === 'verify' ? await client.verify({ signal: active.controller.signal }) : value.action === 'status'
           ? await client.status({ signal: active.controller.signal })
           : await client.interpret({ question: value.question, model: value.model, signal: active.controller.signal });
         active.controller.signal.throwIfAborted();

@@ -14,6 +14,7 @@ export function createDesktopModel(bridge) {
   return {
     analyze: ({ task, payload, images = [], signal }) => call('analyze', { task, payload, images }, signal),
     status: ({ signal } = {}) => call('status', {}, signal),
+    verify: ({ signal } = {}) => call('verify', {}, signal),
     interpret: ({ question, model, signal }) => call('interpret', { question, model }, signal),
   };
 }

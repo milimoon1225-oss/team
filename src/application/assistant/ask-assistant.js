@@ -55,6 +55,7 @@ export function createAssistant({ languageModel, media, designs, query = queryWo
         page: current.page, order: current.order ? { id: current.order.id, code: current.order.code, client: current.order.client, version: current.order.designs.length, design: current.order.designs.at(-1)?.name } : null,
         help: SCREEN_HELP[current.page] };
     },
+    verify: (session, { signal } = {}) => inSession(session, signal, active => languageModel.verify({ signal: active }), 180000),
     status: (session, { signal } = {}) => inSession(session, signal, active => languageModel.status({ signal: active })),
     ask: (session, { question, model, signal }) => inSession(session, signal, async active => {
       const proposed = await languageModel.interpret({ question: validateQuestion(question), model, signal: active });

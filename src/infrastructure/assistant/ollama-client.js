@@ -89,7 +89,15 @@ export function createOllamaClient({ fetcher = (...args) => fetch(...args) } = {
       throw error;
     } finally { clearTimeout(timer); signal?.removeEventListener('abort', cancel); if (active === controller) active = null; }
   }
-  return {
+  const client = {
+    async verify({ signal } = {}) {
+      const status = await client.status({ signal });
+      if (!status.models.length) return { ...status, ready: false, reason: 'missing-model' };
+      const started = Date.now();
+      const result = await client.interpret({ question: 'Pedidos pendientes de hoy', model: 'qwen3.5:4b', signal });
+      if (result.tool !== 'pending' || result.day !== 'today' || result.term !== '') throw new Error('Qwen respondió, pero no superó la consulta de comprobación. Reintenta antes de usar el análisis.');
+      return { ...status, ready: true, milliseconds: Date.now() - started };
+    },
     async analyze({ task, payload, images = [], signal }) {
       validateAnalysisRequest({ task, payload, images });
       const data = await request('/api/chat', { signal, timeout: 180000, body: {
@@ -121,4 +129,5 @@ export function createOllamaClient({ fetcher = (...args) => fetch(...args) } = {
       catch { throw new Error('El modelo no produjo una consulta válida. Usa las consultas rápidas.'); }
     },
   };
+  return client;
 }

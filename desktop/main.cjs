@@ -10,12 +10,11 @@ const { APP_ORIGIN, CSP, esLocal, enlaceExternoPermitido, archivoLocal } = requi
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { standard: true, secure: true, supportFetchAPI: true, corsEnabled: true } }]);
 
 app.setName('Creativa Operaciones');
-// Una actualización o reinstalación mantiene la sesión y los registros locales.
-app.setPath('userData', !app.isPackaged && process.env.CREATIVA_TEST_USER_DATA
-  ? process.env.CREATIVA_TEST_USER_DATA
-  : path.join(app.getPath('appData'), 'Creativa-Operaciones'));
+// El modo de autoprueba del paquete exige una marca explícita y un perfil absoluto.
+const perfilPrueba = process.env.CREATIVA_TEST_USER_DATA;
+const esPrueba = !!perfilPrueba && path.isAbsolute(perfilPrueba) && (!app.isPackaged || app.commandLine.hasSwitch('creativa-autoprueba'));
+app.setPath('userData', esPrueba ? perfilPrueba : path.join(app.getPath('appData'), 'Creativa-Operaciones'));
 
-const esPrueba = !app.isPackaged && process.env.CREATIVA_TEST_USER_DATA;
 const bloqueo = esPrueba || app.requestSingleInstanceLock();
 let ventana;
 const asistente = crearAsistente({
@@ -99,6 +98,10 @@ if (!bloqueo) app.quit();
 else {
   app.on('second-instance', () => { if (ventana) { if (ventana.isMinimized()) ventana.restore(); ventana.focus(); } });
   app.whenReady().then(async () => {
+    if (esPrueba) {
+      await fs.mkdir(app.getPath('userData'), { recursive: true });
+      await fs.writeFile(path.join(app.getPath('userData'), 'creativa-autoprueba.json'), JSON.stringify({ packaged: app.isPackaged, version: app.getVersion(), appPath: app.getAppPath(), profile: app.getPath('userData') }));
+    }
     // Copiar resúmenes de pedidos es la única capacidad extra que requiere la interfaz.
     session.defaultSession.setPermissionRequestHandler((contents, permiso, responder) => responder(contents === ventana?.webContents && esLocal(contents.getURL()) && permiso === 'clipboard-sanitized-write'));
     session.defaultSession.setPermissionCheckHandler((contents, permiso, origen) => contents === ventana?.webContents && esLocal(origen) && permiso === 'clipboard-sanitized-write');

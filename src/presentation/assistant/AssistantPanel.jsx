@@ -103,7 +103,8 @@ export default function AssistantPanel({ assistant, session, open, onClose, cont
     catch(error){append({role:'assistant',text:error.message});}
   }
   async function checkEngine() {
-    await perform(async signal=>{const value=await assistant.status(session,{signal});setEngineStatus(value.models.length?'Qwen3.5 de 4B está listo.':'Falta descargar qwen3.5:4b en Ollama.');return{reply:value.models.length?'La IA local está disponible.':'Las consultas locales siguen disponibles; falta preparar el modelo.'};});
+    setEngineStatus('Probando una respuesta real de Qwen3.5:4b… La primera carga puede tardar.');
+    await perform(async signal=>{try {const value=await assistant.verify(session,{signal});const text=value.ready?`Qwen3.5:4b respondió correctamente. Prueba real: ${(value.milliseconds/1000).toFixed(1)} s.`:'Ollama está disponible, pero falta descargar qwen3.5:4b. Ejecuta: ollama pull qwen3.5:4b';setEngineStatus(text);return{reply:text};} catch(error) {setEngineStatus(`La comprobación no se completó: ${error.message}`);throw error;}});
   }
   const quick=(label,tool,day='any')=>void send(label,{tool,term:'',day});
   let hasDraft=false;

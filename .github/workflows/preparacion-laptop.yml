@@ -1,0 +1,38 @@
+name: Preparación de otra laptop
+on:
+  workflow_dispatch:
+  push:
+    branches: [feat/escritorio-local]
+    paths:
+      - 'scripts/diagnostico.mjs'
+      - 'scripts/preparar-ollama-windows.ps1'
+      - 'distribucion/windows/Preparar-IA.cmd'
+      - 'test/preparacion-windows.ps1'
+      - '.github/workflows/preparacion-laptop.yml'
+permissions:
+  contents: read
+jobs:
+  preparacion:
+    runs-on: windows-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npm run setup:desktop
+      - name: Preparar runtime y modelo reales para la prueba
+        shell: pwsh
+        run: ./scripts/preparar-ollama-windows.ps1
+      - name: Revisar preparación con y sin servicio local
+        shell: pwsh
+        run: ./test/preparacion-windows.ps1
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: Evidencia-Preparacion-Laptop
+          path: test-output/
+          if-no-files-found: warn
+          retention-days: 14

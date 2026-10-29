@@ -1,79 +1,96 @@
-# Instalación, desarrollo y entrega
+# Instalación, desarrollo y revisión en otra laptop
 
-## Usuario de Windows
+## Requisitos
 
-1. Descarga `Creativa-Operaciones-0.3.1-x64-Portable.exe` desde `distribucion/windows/` de esta misma rama, o desde la [Release de escritorio](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.1).
-2. Ejecuta el portable con tu usuario de Windows. No requiere instalar Node.js.
-3. Elige un responsable y PIN, o explora primero la demostración.
-4. Crea un pedido de prueba, bloquea y vuelve a abrir el espacio para comprobar el guardado.
-5. Descarga un respaldo cifrado desde Configuración y guárdalo fuera de la computadora.
+El ejecutable publicado es para **Windows x64**. Para utilizar Creativa junto con Ollama, usa Windows 10 22H2 o Windows 11. La integración automática existente se realizó en Windows Server 2025 x64.
 
-La edición portable abre sin instalar. Guarda sus datos en el perfil del usuario de Windows, no junto al ejecutable: copiar solo el `.exe` no traslada los pedidos.
+Para IA se recomiendan 16 GB de RAM y 15 GB libres durante la preparación inicial. Son recomendaciones, no mínimos certificados. La GPU dedicada es opcional para el modelo; se comprobó inferencia en CPU. La vista 3D utiliza WebGL y ofrece vista plana cuando el renderizador no está disponible.
 
-Los ejecutables de esta configuración no tienen firma comercial. Windows puede mostrar una advertencia de editor desconocido. Para una distribución empresarial conviene firmar el instalador y verificarlo en una máquina Windows limpia.
+Ollama documenta Windows 10 22H2 o posterior y al menos 4 GB para su instalación; Qwen añade aproximadamente 3.3 GB. Las dependencias de desarrollo y los archivos temporales requieren espacio adicional. Fuentes: [Ollama en Windows](https://docs.ollama.com/windows), [instalación de Electron](https://www.electronjs.org/docs/latest/tutorial/installation).
 
-## Desarrollo
+## Revisar la aplicación como usuario
 
-Requisitos: Node.js 24 LTS, npm y escritorio gráfico. Desde la raíz que contiene `package.json`:
+1. Descarga [Portable.exe 0.3.1](https://github.com/milimoon1225-oss/team/releases/download/desktop-v0.3.1/Creativa-Operaciones-0.3.1-x64-Portable.exe) o el instalador de la [Release](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.1).
+2. Abre el portable, o instala Creativa con el instalador. No requiere Node.js, Python, npm, Git ni Supabase.
+3. Usa **Explorar demostración** para recorrer las muestras o crea el responsable local y su PIN.
+4. Instala [Ollama](https://ollama.com/download/windows) y ábrelo para utilizar IA.
+5. Ejecuta [Preparar-IA.cmd](../distribucion/windows/Preparar-IA.cmd). Si falta Qwen pregunta antes de descargarlo; la preparación requiere internet. Si Ollama no está instalado indica su enlace oficial. Comprueba una respuesta real al terminar.
+6. Desde el chat, pulsa **Más opciones y ayuda → Comprobar modelo local**.
+
+La app y su modelo ya preparado pueden trabajar sin internet. La entrega actual no incluye Ollama ni los pesos del modelo dentro del `.exe`. El preparador usa CMD y PowerShell incluidos en Windows; no modifica sus políticas de ejecución ni instala lenguajes.
+
+Los ejecutables no tienen firma comercial. Windows puede identificar el editor como desconocido. La instalación interactiva y las condiciones del equipo de destino deben comprobarse allí.
+
+## Revisar el código como programador
+
+Instala Git y Node.js 24 LTS, con npm. En una terminal:
 
 ```sh
+git clone --single-branch --branch feat/escritorio-local https://github.com/milimoon1225-oss/team.git Creativa-Escritorio
+cd Creativa-Escritorio
 npm ci
+npm run setup:desktop
+npm run diagnostico
 npm start
 ```
 
-La versión utilizada de Electron puede descargar su motor en el primer arranque. Para preparar explícitamente ese motor antes de abrir la aplicación o ejecutar las pruebas:
+La rama es un proyecto independiente. No necesita las carpetas anteriores, una cuenta de Supabase, PostgreSQL, Python ni `.env`. `npm start` compila y abre Electron. `npm run dev` sirve para desarrollo de pantallas y no es el comando para abrir la app de escritorio.
+
+`npm run setup:desktop` descarga el motor Electron de este entorno. La instalación inicial de dependencias y motor necesita conexión. [Electron documenta también su descarga diferida](https://www.electronjs.org/docs/latest/tutorial/installation).
+
+Para comprobar IA en el entorno de desarrollo, con Ollama instalado y abierto:
 
 ```sh
-npm run setup:desktop
+ollama pull qwen3.5:4b
+npm run diagnostico -- --modelo
 ```
 
-`npm run dev` sirve únicamente para desarrollo de pantallas. La entrega de escritorio se abre con `npm start` o con el ejecutable empaquetado.
+El diagnóstico no instala componentes. Con `--modelo` falla si falta el servicio, el modelo o una respuesta válida. Sin esa opción, esos problemas se muestran como avisos porque no impiden usar la gestión sin IA.
 
-## Compilar Windows
+## Git LFS y el ejecutable
 
-En Windows x64:
+La copia de `distribucion/windows/` usa Git LFS. Para obtenerla al clonar, instala Git LFS y ejecuta `git lfs install` antes de clonar, o `git lfs pull` dentro de la copia existente. Un archivo de unos pocos bytes que comienza por `version https://git-lfs.github.com/spec/v1` es un puntero, no el ejecutable.
+
+Puedes compilar las fuentes sin descargar ese portable. Para abrir un `.exe` sin herramientas de desarrollo, utiliza la Release. No intentes ejecutar un puntero LFS ni el `.exe` Windows directamente en Linux/macOS.
+
+## Pruebas y compilación Windows
+
+Desde la raíz del repositorio:
 
 ```sh
-npm ci
-npm run setup:desktop
 npm run lint
 npm test
-npm run test:desktop
-npm run test:samples
+npm run build
 npm run dist:win
 npm run checksums
+npm run test:package
 ```
 
-`release/` contendrá los ejecutables y `SHA256SUMS.txt`. Las salidas de `release/` se ignoran en Git. Esta entrega incluye una copia explícita del portable y su SHA-256 en `distribucion/windows/`. Compilar Windows desde Linux puede requerir herramientas auxiliares; la ruta recomendada y automatizada es el flujo Windows del repositorio.
+`npm run test:package` abre `release/win-unpacked/Creativa Operaciones.exe` en un perfil temporal. Para comprobar Qwen real, con el modelo ya preparado:
 
-En GitHub: abre Actions → **Escritorio Windows** → Run workflow sobre la rama publicada. Descarga el artefacto generado. Para entregar al público, crea una Release y adjunta los `.exe` y el archivo SHA-256. Ese procedimiento requiere publicar previamente la rama; no se ejecuta por reorganizar las fuentes.
+```sh
+npm run test:package:model
+```
 
-## Respaldos y traslado
+Para comprobar el portable generado, en PowerShell:
 
-- Descarga el respaldo desde Configuración antes de una actualización importante.
-- Conserva el PIN por separado: no hay recuperación de una clave perdida.
-- En otra computadora o perfil vacío, introduce el PIN del respaldo en la pantalla inicial y selecciona Restaurar respaldo cifrado.
-- Si ya hay una copia, la aplicación rechaza la restauración para no sobrescribirla. No elimina ni fusiona los datos existentes.
-- La demostración es temporal y no permite generar un respaldo de producción.
+```powershell
+$env:CREATIVA_PACKAGED_EXE = (Resolve-Path 'release/Creativa-Operaciones-0.3.1-x64-Portable.exe').Path
+npm run test:package:model
+```
 
-En Windows, el perfil está habitualmente en `%APPDATA%\Creativa-Operaciones`. Usa el respaldo de la aplicación para trasladar información; no manipules los archivos internos mientras esté abierta.
+Las pruebas de control nativo `test:desktop` y `test:samples` se ejecutan en Linux. En el runner Windows se observó un bloqueo del depurador de ese control; la revisión Windows usa las pruebas del ejecutable final por CDP. La compilación Windows se recomienda hacer en Windows, o mediante Actions → **Escritorio Windows**.
 
-## Validación antes de entregar
+Las salidas de `release/` se ignoran en Git. La distribución seleccionada está en `distribucion/windows/`. Los perfiles de `test-output/` contienen datos ficticios y no sustituyen los respaldos de la imprenta.
 
-Comprueba en Windows: instalación y portable, creación de pedido, cobro y saldo, cierre de caja, diseño y aprobación, vista 3D y ventana de cliente, impresión/PDF, bloqueo y reapertura, respaldo/restauración en un perfil vacío. Prueba también sin red y sin Ollama para confirmar que la gestión sigue disponible. El modelo local se valida por separado cuando esté instalado.
+## Datos, respaldo y traslado
 
-## Estado de esta entrega
+Los datos se guardan en `%APPDATA%\Creativa-Operaciones`, por usuario de Windows. La edición portable usa esa misma ubicación: copiar el `.exe` no traslada pedidos ni modelos.
 
-El flujo Windows generó instalador y portable 0.3.1. La prueba del `.exe` empaquetado y del portable terminó en PASS con Ollama y Qwen3.5:4b reales, incluyendo texto, imagen y reapertura del pedido cifrado. Consulta [VALIDACION-MODELO.md](VALIDACION-MODELO.md).
+Antes de cambiar de equipo, descarga un respaldo cifrado desde Configuración y conserva el PIN. Restaura desde la pantalla inicial de un perfil vacío; la aplicación rechaza sobrescribir otra copia. Los respaldos no fusionan bases. La demostración es temporal.
 
-La instalación interactiva del instalador NSIS se debe comprobar en la computadora de destino. La integración automatizada utiliza perfiles temporales; no modifica los datos de la imprenta.
+Ollama y Qwen se preparan por separado en el equipo nuevo. No elimines perfiles reales para realizar pruebas: las pruebas automatizadas crean sus propios perfiles temporales.
 
-El portable de `distribucion/windows/` utiliza Git LFS. Para descargarlo directamente sin herramientas de desarrollo, utiliza el archivo adjunto de la Release. Para compilar desde el código, basta con las fuentes, Node.js y las dependencias indicadas.
+## Qué está validado
 
-## Validación del asistente en la entrega 0.3.1
-
-La aplicación conserva las funciones de gestión aunque falte Ollama. Para activar IA en la computadora de destino: instala Ollama, abre su servicio y ejecuta `ollama pull qwen3.5:4b` una vez con internet. El modelo no está dentro del `.exe`; después de descargarlo se utiliza localmente.
-
-Desde Asistente → Más opciones y ayuda → Comprobar modelo local se realiza una inferencia real. Detectar el nombre del modelo instalado ya no se presenta como prueba suficiente de funcionamiento. El tiempo mostrado corresponde a la comprobación en esa computadora.
-
-La integración automatizada y sus resultados distinguen pruebas del código, del paquete y del portable. Consulta `test-output/` o el artefacto de evidencia del flujo Windows. La versión anterior 0.3.0 no incorpora este diagnóstico nuevo.
+El `.exe` empaquetado y el portable 0.3.1 pasaron pruebas con Qwen real, texto e imagen, guardado de pedido, 3D y reapertura. Véanse [los informes](VALIDACION-MODELO.md). Esto no certifica todos los equipos o imágenes. La instalación interactiva del instalador NSIS y la configuración física de impresión se revisan en el destino.

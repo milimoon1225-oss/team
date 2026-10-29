@@ -21,7 +21,8 @@
     "dist:portable": "npm run build && electron-builder --win portable --x64 --publish never",
     "setup:desktop": "node node_modules/electron/install.js",
     "test:package": "node test/desktop/paquete.mjs",
-    "test:package:model": "node test/desktop/paquete.mjs --real-model"
+    "test:package:model": "node test/desktop/paquete.mjs --real-model",
+    "diagnostico": "node scripts/diagnostico.mjs"
   },
   "dependencies": {
     "pdfjs-dist": "^6.4.299",

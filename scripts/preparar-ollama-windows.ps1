@@ -21,7 +21,8 @@ $env:OLLAMA_CONTEXT_LENGTH = '4096'
 $toolDir | Out-File -Append -Encoding utf8 $env:GITHUB_PATH
 $evidence = Join-Path $env:GITHUB_WORKSPACE 'test-output'
 New-Item -ItemType Directory -Force -Path $evidence | Out-Null
-Start-Process -FilePath $ollama -ArgumentList 'serve' -PassThru -RedirectStandardOutput (Join-Path $evidence 'ollama-out.log') -RedirectStandardError (Join-Path $evidence 'ollama-error.log') | Out-Null
+$server = Start-Process -FilePath $ollama -ArgumentList 'serve' -PassThru -RedirectStandardOutput (Join-Path $evidence 'ollama-out.log') -RedirectStandardError (Join-Path $evidence 'ollama-error.log')
+$server.Id | Set-Content -Encoding ascii (Join-Path $evidence 'ollama-servidor.pid')
 $ready = $false
 for ($attempt = 0; $attempt -lt 60; $attempt++) {
   try { Invoke-RestMethod 'http://127.0.0.1:11434/api/tags' | Out-Null; $ready = $true; break } catch { Start-Sleep -Seconds 2 }

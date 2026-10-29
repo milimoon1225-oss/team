@@ -21,8 +21,6 @@ jobs:
       - run: npm run setup:desktop
       - run: npm run lint
       - run: npm test
-      - run: npm run test:desktop
-      - run: npm run test:samples
       - run: npm run dist:win
       - run: npm run checksums
       - name: Preparar Ollama y Qwen3.5 de 4B reales

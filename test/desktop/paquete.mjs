@@ -16,12 +16,12 @@ const output=path.join(root,'test-output',`paquete-${process.platform}-${Date.no
 await mkdir(output,{recursive:true});
 const profile=path.join(output,'perfil-temporal');
 const env={...process.env,CREATIVA_TEST_USER_DATA:profile};delete env.ELECTRON_RUN_AS_NODE;
-const args=['--creativa-autoprueba',...(process.platform==='linux'?['--no-sandbox','--ozone-platform=headless','--enable-unsafe-swiftshader']:[])];
+const args=['--creativa-autoprueba',...(process.platform==='linux'?['--no-sandbox','--ozone-platform=headless','--enable-unsafe-swiftshader']:['--use-angle=swiftshader','--enable-unsafe-swiftshader'])];
 const report={at:new Date().toISOString(),platform:process.platform,executable,realModel:real,checks:[]};
 let app;
 const portable=/-Portable[.]exe$/i.test(executable);
 async function launch() {
-  if(!portable)return electron.launch({executablePath:executable,args,env,timeout:60000});
+  if(!portable && process.platform!=='win32')return electron.launch({executablePath:executable,args,env,timeout:60000});
   await mkdir(profile,{recursive:true});
   for(const name of ['DevToolsActivePort','creativa-autoprueba.json'])await rm(path.join(profile,name),{force:true});
   let logs='',failure;
@@ -37,11 +37,11 @@ async function launch() {
       browser=await chromium.connectOverCDP(`http://127.0.0.1:${port}`,{timeout:1000});break;
     }catch{await delay(250);}
   }
-  if(!browser){child.kill();throw new Error(`El portable no abrió su sesión de prueba. ${logs}`);}
+  if(!browser){child.kill();throw new Error(`El ejecutable no abrió su sesión de prueba. ${logs}`);}
   return {
     identity,
     context:()=>browser.contexts()[0],
-    firstWindow:async()=>{for(let i=0;i<120;i++){const page=browser.contexts()[0]?.pages().find(p=>p.url().startsWith('app://creativa'));if(page)return page;await delay(250);}throw new Error('El portable no abrió su ventana.');},
+    firstWindow:async()=>{for(let i=0;i<120;i++){const page=browser.contexts()[0]?.pages().find(p=>p.url().startsWith('app://creativa'));if(page)return page;await delay(250);}throw new Error('El ejecutable no abrió su ventana.');},
     close:async()=>{
       for(const page of browser.contexts()[0]?.pages()||[]){try{await page.evaluate(()=>window.close());}catch{/* La ventana ya puede haberse cerrado. */}}
       await browser.close();
@@ -62,8 +62,25 @@ try {
   assert.equal(await page.evaluate(()=>typeof window.require),'undefined');
   await page.getByLabel('Elige un PIN local (6 a 12 dígitos)').fill('31415926');await page.getByLabel('Repite el PIN').fill('31415926');
   await page.getByRole('button',{name:'Preparar y comenzar',exact:true}).click();await page.getByRole('heading',{name:'Pedidos',exact:true}).waitFor();
+  await page.getByRole('button',{name:'Nuevo pedido',exact:true}).click();
+  await page.getByLabel('Cliente',{exact:true}).fill('Cliente de validación del paquete');
+  await page.getByLabel('Tipo de trabajo',{exact:true}).fill('Invitación de prueba');
+  await page.getByLabel('Precio total (S/)',{exact:true}).fill('25');
+  await page.getByRole('button',{name:'Guardar pedido',exact:true}).click();await page.locator('.w-order').first().click();
+  await page.getByRole('button',{name:'Imprimir recibo / PDF',exact:true}).click();
+  const pdfSession=await app.context().newCDPSession(page);
+  const pdf=await pdfSession.send('Page.printToPDF',{printBackground:true});await pdfSession.detach();
+  assert.equal(Buffer.from(pdf.data,'base64').subarray(0,5).toString(),'%PDF-');await writeFile(path.join(output,'recibo.pdf'),Buffer.from(pdf.data,'base64'));
+  await page.getByRole('button',{name:'Cerrar recibo',exact:true}).click();
+  const dialog=page.getByRole('dialog');await dialog.getByRole('button',{name:'Presentación 3D',exact:true}).click();
+  await dialog.getByRole('button',{name:'Cargar diseño de ejemplo',exact:true}).click();
+  await dialog.locator('.p3-stage[data-status=ready]').waitFor();
+  await dialog.getByRole('button',{name:'Guardar versión 3D',exact:true}).click();
+  await dialog.getByLabel('Versión 3D guardada').getByRole('option',{name:/Versión 3D 1/}).waitFor({state:'attached'});
+  await page.getByRole('button',{name:'Cerrar pedido',exact:true}).click();
+  report.checks.push('Pedido local, recibo PDF real y versión 3D guardada sin internet');console.log('PASS: pedido, PDF y 3D desde el paquete.');
   await page.getByRole('button',{name:'Abrir asistente',exact:true}).click();
-  await page.getByRole('button',{name:'Ver pendientes',exact:true}).click();await page.getByRole('heading',{name:/0 pedidos pendientes/}).last().waitFor();
+  await page.getByRole('button',{name:'Ver pendientes',exact:true}).click();await page.getByRole('heading',{name:/1 pedido/}).last().waitFor();
   report.checks.push('Paquete real, perfil aislado, sandbox y consulta rápida sin internet');
   if(real) {
     const start=Date.now();
@@ -96,7 +113,8 @@ try {
   await reopened.getByRole('heading',{name:'Abrir mi espacio de trabajo',exact:true}).waitFor();
   await reopened.getByLabel('PIN local',{exact:true}).fill('31415926');await reopened.getByRole('button',{name:'Abrir espacio de trabajo',exact:true}).click();
   await reopened.getByRole('heading',{name:'Pedidos',exact:true}).waitFor();
-  report.checks.push('Reinicio del paquete y reapertura del perfil cifrado');report.result='PASS';
+  assert.equal(await reopened.locator('.w-order').count(),1);
+  report.checks.push('Reinicio del paquete y reapertura del pedido en el perfil cifrado');report.result='PASS';
   console.log('PASS: paquete real y persistencia tras reinicio.');
 } catch(error) {
   report.result='FAIL';report.error=error.stack;

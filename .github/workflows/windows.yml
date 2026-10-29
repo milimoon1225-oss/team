@@ -25,6 +25,8 @@ jobs:
       - run: npm run checksums
       - name: Preparar Ollama y Qwen3.5 de 4B reales
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: ./scripts/preparar-ollama-windows.ps1
       - name: Probar exe y portable con el modelo real
         shell: pwsh

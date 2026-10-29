@@ -3,7 +3,10 @@ $ErrorActionPreference = 'Stop'
 $toolDir = Join-Path $env:RUNNER_TEMP 'creativa-ollama'
 $modelDir = Join-Path $env:RUNNER_TEMP 'creativa-modelos'
 New-Item -ItemType Directory -Force -Path $toolDir, $modelDir | Out-Null
-$release = Invoke-RestMethod 'https://api.github.com/repos/ollama/ollama/releases/latest'
+$apiHeaders = @{ Accept = 'application/vnd.github+json'; 'User-Agent' = 'Creativa-CI' }
+if ($env:GH_TOKEN) { $apiHeaders.Authorization = "Bearer $env:GH_TOKEN" }
+# Usar la versión del runtime con la que se validó esta entrega.
+$release = Invoke-RestMethod -Headers $apiHeaders 'https://api.github.com/repos/ollama/ollama/releases/tags/v0.40.13'
 $asset = $release.assets | Where-Object name -eq 'ollama-windows-amd64.zip' | Select-Object -First 1
 if (-not $asset) { throw 'No se encontró el paquete Windows oficial de Ollama.' }
 $archive = Join-Path $env:RUNNER_TEMP 'creativa-ollama.zip'

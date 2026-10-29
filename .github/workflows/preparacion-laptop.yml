@@ -25,6 +25,8 @@ jobs:
       - run: npm run setup:desktop
       - name: Preparar runtime y modelo reales para la prueba
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: ./scripts/preparar-ollama-windows.ps1
       - name: Revisar preparación con y sin servicio local
         shell: pwsh

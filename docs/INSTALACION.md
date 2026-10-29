@@ -14,7 +14,7 @@ Ollama documenta Windows 10 22H2 o posterior y al menos 4 GB para su instalació
 2. Abre el portable, o instala Creativa con el instalador. No requiere Node.js, Python, npm, Git ni Supabase.
 3. Usa **Explorar demostración** para recorrer las muestras o crea el responsable local y su PIN.
 4. Instala [Ollama](https://ollama.com/download/windows) y ábrelo para utilizar IA.
-5. Ejecuta [Preparar-IA.cmd](../distribucion/windows/Preparar-IA.cmd). Si falta Qwen pregunta antes de descargarlo; la preparación requiere internet. Si Ollama no está instalado indica su enlace oficial. Comprueba una respuesta real al terminar.
+5. Ejecuta [Preparar-IA.cmd](https://github.com/milimoon1225-oss/team/releases/download/desktop-v0.3.1/Preparar-IA.cmd). Si falta Qwen pregunta antes de descargarlo; la preparación requiere internet. Si Ollama no está instalado indica su enlace oficial. Comprueba una respuesta real al terminar.
 6. Desde el chat, pulsa **Más opciones y ayuda → Comprobar modelo local**.
 
 La app y su modelo ya preparado pueden trabajar sin internet. La entrega actual no incluye Ollama ni los pesos del modelo dentro del `.exe`. El preparador usa CMD y PowerShell incluidos en Windows; no modifica sus políticas de ejecución ni instala lenguajes.

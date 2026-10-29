@@ -1,0 +1,29 @@
+{
+  "result": "PASS",
+  "platform": "Windows x64",
+  "workflow": "https://github.com/milimoon1225-oss/team/actions/runs/40937070523",
+  "sourceCommit": "259f8e429b31b25184f4cc96c8fde913bdfdb8f5",
+  "checks": [
+    {
+      "caso": "Servicio ausente detectado sin descargar ni iniciar programas",
+      "resultado": "PASS"
+    },
+    {
+      "caso": "Diagnóstico exige servicio para IA real",
+      "resultado": "PASS"
+    },
+    {
+      "caso": "Preparador inicia Ollama y verifica una inferencia real",
+      "resultado": "PASS"
+    },
+    {
+      "caso": "Comprobación repetible sin instalaciones ni descargas",
+      "resultado": "PASS"
+    },
+    {
+      "caso": "Fuentes, Electron y respuesta real de Qwen preparados",
+      "resultado": "PASS"
+    }
+  ],
+  "setupScriptSha256": "8eb4e66150889e541105cd89d987705b6010061c56b1ce46aefccb52fa6f5758"
+}

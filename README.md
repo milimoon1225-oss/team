@@ -20,7 +20,7 @@ La GPU dedicada no es obligatoria para la IA: la integración Windows se comprob
 1. Descarga el [portable Windows x64 0.3.1](https://github.com/milimoon1225-oss/team/releases/download/desktop-v0.3.1/Creativa-Operaciones-0.3.1-x64-Portable.exe) de la [Release](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.1).
 2. Abre el archivo. Elige **Explorar demostración** o prepara un responsable y PIN.
 3. Para las funciones con IA, instala [Ollama para Windows](https://ollama.com/download/windows) y ábrelo.
-4. Ejecuta [Preparar-IA.cmd](distribucion/windows/Preparar-IA.cmd). Si falta el modelo solicita confirmación para descargarlo y comprueba una respuesta real. No requiere Node.js ni Python.
+4. Ejecuta [Preparar-IA.cmd](https://github.com/milimoon1225-oss/team/releases/download/desktop-v0.3.1/Preparar-IA.cmd). Si falta el modelo solicita confirmación para descargarlo y comprueba una respuesta real. No requiere Node.js ni Python.
 5. En el chat, utiliza **Más opciones y ayuda → Comprobar modelo local**.
 
 Guía completa: [abrir en otra laptop](distribucion/windows/LEEME-OTRA-LAPTOP.md). El preparador no instala Ollama automáticamente y la entrega no incluye los pesos de Qwen. La preparación inicial necesita internet.
@@ -118,3 +118,5 @@ En Asistente → Más opciones y ayuda → Comprobar modelo local se ejecuta una
 La [validación Windows](https://github.com/milimoon1225-oss/team/actions/runs/40929101751) pasó sobre el commit `c12ba5496a7e738b1002b30641b81afe4a5d611b`. Consulta los [casos y evidencias](docs/VALIDACION-MODELO.md). Los ejecutables distribuidos conservan los hashes de los archivos probados.
 
 Si quieres descargar el `.exe` al clonar el repositorio, instala Git LFS y ejecuta `git lfs install` antes de clonar, o `git lfs pull` después. Las fuentes y su compilación no dependen del ejecutable distribuido.
+
+La [preparación de otra laptop](https://github.com/milimoon1225-oss/team/actions/runs/40937070523) también se verificó en Windows: servicio apagado, inicio desde el preparador, respuestas reales y diagnóstico del entorno. El código probado del preparador corresponde a `259f8e429b31b25184f4cc96c8fde913bdfdb8f5`.

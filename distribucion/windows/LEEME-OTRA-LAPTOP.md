@@ -46,6 +46,8 @@ Cada usuario de Windows tiene su espacio local en `%APPDATA%\Creativa-Operacione
 
 ## Alcance comprobado
 
-El ejecutable empaquetado y el portable 0.3.1 pasaron pruebas automáticas en Windows Server 2025 x64 con Ollama y Qwen reales: pedido, 3D, diagnóstico del modelo, encargo ficticio, lectura de imagen y reapertura de los datos. Los resultados están en [VALIDACION-MODELO.md](../../docs/VALIDACION-MODELO.md).
+El ejecutable empaquetado y el portable 0.3.1 pasaron pruebas automáticas en Windows Server 2025 x64 con Ollama y Qwen reales: pedido, 3D, diagnóstico del modelo, encargo ficticio, lectura de imagen y reapertura de los datos. Los resultados están en [VALIDACION-MODELO.md](https://github.com/milimoon1225-oss/team/blob/feat/escritorio-local/docs/VALIDACION-MODELO.md).
 
 La primera preparación necesita internet: los pesos del modelo y Ollama se instalan por separado del `.exe`. Esta entrega todavía no es un instalador que incluya toda la IA para una computadora sin conexión desde el primer momento.
+
+La preparación se comprobó también en [Windows con el servicio apagado y encendido](https://github.com/milimoon1225-oss/team/actions/runs/40937070523), incluyendo el inicio desde este preparador y respuestas reales del modelo.

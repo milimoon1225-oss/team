@@ -1,3 +1,3 @@
 8c8ec8d443539ffb2ea79a62ecc0b2f0fd56b56586a9d7094b8755db1234140b  Creativa-Operaciones-0.3.1-x64-Portable.exe
-054c098fa889936de2ae135ae9c0690aa3bd6a4cfe010d5d2a75b22a3c84d943  Preparar-IA.cmd
+8eb4e66150889e541105cd89d987705b6010061c56b1ce46aefccb52fa6f5758  Preparar-IA.cmd
 34715ccbcfe0f1d048275ee0eb8aab2df9f87c5720bde69c1e0de54eeff0d4a1  LEEME-OTRA-LAPTOP.md

@@ -40,6 +40,8 @@ npm run diagnostico
 npm start
 ```
 
+En PowerShell, si se bloquea `npm.ps1`, utiliza `npm.cmd` en los mismos comandos, por ejemplo `npm.cmd ci` y `npm.cmd start`. No necesitas cambiar la política global de ejecución. En Linux utiliza `npm`.
+
 La última instrucción abre Electron. El código no depende de las otras carpetas del equipo original. No necesitas ejecutar servidores externos ni configurar archivos `.env`. Si solo vas a compilar las fuentes, el portable distribuido no es necesario.
 
 Para activar y comprobar IA en la laptop de desarrollo, con Ollama instalado y abierto:

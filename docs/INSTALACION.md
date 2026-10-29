@@ -34,6 +34,8 @@ npm run diagnostico
 npm start
 ```
 
+En PowerShell, si se bloquea `npm.ps1`, utiliza `npm.cmd` en los mismos comandos, por ejemplo `npm.cmd ci` y `npm.cmd start`. No necesitas cambiar la política global de ejecución. En Linux utiliza `npm`.
+
 La rama es un proyecto independiente. No necesita las carpetas anteriores, una cuenta de Supabase, PostgreSQL, Python ni `.env`. `npm start` compila y abre Electron. `npm run dev` sirve para desarrollo de pantallas y no es el comando para abrir la app de escritorio.
 
 `npm run setup:desktop` descarga el motor Electron de este entorno. La instalación inicial de dependencias y motor necesita conexión. [Electron documenta también su descarga diferida](https://www.electronjs.org/docs/latest/tutorial/installation).

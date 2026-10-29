@@ -23,7 +23,7 @@ echo Iniciando Ollama. Mantenlo abierto mientras uses la IA.
 if exist "%LOCALAPPDATA%\Programs\Ollama\ollama app.exe" (
   start "" "%LOCALAPPDATA%\Programs\Ollama\ollama app.exe"
 ) else (
-  start "Ollama para Creativa" /min "%OLLAMA_EXE%" serve
+  start "Ollama para Creativa" /min "%OLLAMA_EXE%" serve >"%TEMP%\Creativa-Ollama-preparacion.log" 2>&1
 )
 powershell.exe -NoProfile -Command "$ErrorActionPreference='Stop'; for($i=0;$i -lt 30;$i++){try{Invoke-RestMethod -Uri 'http://127.0.0.1:11434/api/tags' -TimeoutSec 2 | Out-Null;exit 0}catch{Start-Sleep -Seconds 2}};exit 2"
 if errorlevel 1 goto falta_servicio

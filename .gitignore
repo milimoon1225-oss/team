@@ -13,4 +13,6 @@ Thumbs.db
 *.zip
 
 # Entrega portable incluida explícitamente en la rama de escritorio.
-!/distribucion/windows/Creativa-Operaciones-0.3.0-x64-Portable.exe
+!/distribucion/windows/Creativa-Operaciones-0.3.1-x64-Portable.exe
+
+.tools/

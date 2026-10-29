@@ -4,3 +4,4 @@
 *.jpg binary
 *.pdf binary
 *.exe binary
+distribucion/windows/Creativa-Operaciones-0.3.1-x64-Portable.exe filter=lfs diff=lfs merge=lfs -text

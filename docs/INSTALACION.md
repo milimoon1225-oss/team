@@ -2,7 +2,7 @@
 
 ## Usuario de Windows
 
-1. Descarga `Creativa-Operaciones-0.3.0-x64-Portable.exe` desde `distribucion/windows/` de esta misma rama, o desde la [Release de escritorio](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.0).
+1. Descarga `Creativa-Operaciones-0.3.1-x64-Portable.exe` desde `distribucion/windows/` de esta misma rama, o desde la [Release de escritorio](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.1).
 2. Ejecuta el portable con tu usuario de Windows. No requiere instalar Node.js.
 3. Elige un responsable y PIN, o explora primero la demostración.
 4. Crea un pedido de prueba, bloquea y vuelve a abrir el espacio para comprobar el guardado.
@@ -62,11 +62,13 @@ En Windows, el perfil está habitualmente en `%APPDATA%\Creativa-Operaciones`. U
 
 Comprueba en Windows: instalación y portable, creación de pedido, cobro y saldo, cierre de caja, diseño y aprobación, vista 3D y ventana de cliente, impresión/PDF, bloqueo y reapertura, respaldo/restauración en un perfil vacío. Prueba también sin red y sin Ollama para confirmar que la gestión sigue disponible. El modelo local se valida por separado cuando esté instalado.
 
-## Estado de esta preparación
+## Estado de esta entrega
 
-Se generó el portable Windows x64 de la versión 0.3.0 y su suma SHA-256. Se revisó el contenido del paquete y se validaron los flujos principales y las muestras mediante Electron en Linux. El ejecutable Windows aún necesita una prueba en Windows real.
+El flujo Windows generó instalador y portable 0.3.1. La prueba del `.exe` empaquetado y del portable terminó en PASS con Ollama y Qwen3.5:4b reales, incluyendo texto, imagen y reapertura del pedido cifrado. Consulta [VALIDACION-MODELO.md](VALIDACION-MODELO.md).
 
-El instalador NSIS no terminó de generarse en este equipo Linux porque no tiene Wine. No se conserva el archivo parcial como entrega. Puede generarse con `npm run dist:win` en Windows o mediante el flujo automatizado. Para generar únicamente el portable: `npm run dist:portable`.
+La instalación interactiva del instalador NSIS se debe comprobar en la computadora de destino. La integración automatizada utiliza perfiles temporales; no modifica los datos de la imprenta.
+
+El portable de `distribucion/windows/` utiliza Git LFS. Para descargarlo directamente sin herramientas de desarrollo, utiliza el archivo adjunto de la Release. Para compilar desde el código, basta con las fuentes, Node.js y las dependencias indicadas.
 
 ## Validación del asistente en la entrega 0.3.1
 

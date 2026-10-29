@@ -1,0 +1,44 @@
+{
+  "at": "2026-10-29T18:14:58.240Z",
+  "platform": "linux",
+  "realModel": true,
+  "result": "PASS",
+  "checks": [
+    "Pedido local y versión 3D guardada sin internet",
+    "Paquete real, perfil aislado, sandbox y consulta rápida sin internet",
+    {
+      "test": "Diagnóstico visible con inferencia real mediante IPC",
+      "milliseconds": 14884
+    },
+    {
+      "test": "Clasificación real de pregunta",
+      "result": {
+        "tool": "pending",
+        "term": "",
+        "day": "tomorrow"
+      }
+    },
+    {
+      "test": "Mensaje ficticio convertido en propuesta sin inventar fecha",
+      "result": {
+        "client": "Rosa Mamani",
+        "qty": "150",
+        "delivery": ""
+      }
+    },
+    {
+      "test": "Revisión visual real de imagen adjunta",
+      "observed": "MARIA Y JOSE\n20/12/2025"
+    },
+    "Reinicio del paquete y reapertura del pedido en el perfil cifrado"
+  ],
+  "asarSha256": "20340cc303e0a26d617cf1d47286f692659d27a5c2ae18f8667dc05f57b6c93d",
+  "executableSha256": "447dc011502a0a5ab4da365d3004646c86aee4eb03aa1643cdf672c7491b64cd",
+  "ollama": {
+    "version": "0.33.1",
+    "model": "qwen3.5:4b",
+    "digest": "d8b0f5e9760cd1682034f292d7ef72ec46f432149be0df7574bf2d6e92e38c04"
+  },
+  "version": "0.3.1",
+  "packaged": true
+}

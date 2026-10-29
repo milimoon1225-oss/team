@@ -6,9 +6,9 @@ Los datos de trabajo se guardan cifrados en esta computadora. No necesita una cu
 
 ## Abrir la aplicación
 
-Descarga el [portable para Windows x64 (.exe)](https://github.com/milimoon1225-oss/team/raw/refs/heads/feat/escritorio-local/distribucion/windows/Creativa-Operaciones-0.3.0-x64-Portable.exe) incluido en `distribucion/windows/` de esta misma rama. También está disponible en la [Release de escritorio 0.3.0](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.0). No requiere Node.js. Incluye el archivo SHA256SUMS.txt para verificar la descarga.
+Descarga el [portable para Windows x64 (.exe)](https://github.com/milimoon1225-oss/team/releases/download/desktop-v0.3.1/Creativa-Operaciones-0.3.1-x64-Portable.exe) incluido en `distribucion/windows/` de esta misma rama. También está disponible en la [Release de escritorio 0.3.1](https://github.com/milimoon1225-oss/team/releases/tag/desktop-v0.3.1). No requiere Node.js. Incluye el archivo SHA256SUMS.txt para verificar la descarga.
 
-Esta entrega es preliminar: el portable se generó y se revisó su paquete, pero todavía debe probarse en Windows real. El instalador NSIS se podrá generar mediante el flujo Windows del repositorio. La entrega portable y su suma SHA-256 están versionadas en `distribucion/windows/`; el código fuente permanece visible en esta misma rama.
+El ejecutable empaquetado y el portable pasaron la integración en Windows con Ollama y Qwen3.5:4b reales: diagnóstico visible, extracción de encargo, lectura de imagen y persistencia tras reiniciar. El instalador NSIS también se generó; su instalación interactiva debe comprobarse en la computadora de destino. La entrega portable y su suma SHA-256 están versionadas en `distribucion/windows/`; el `.exe` se almacena con Git LFS por superar 100 MB. Para descargarlo sin Git LFS, utiliza la Release. El código fuente permanece visible en esta misma rama.
 
 En el primer inicio, elige el responsable y un PIN de 6 a 12 dígitos, o pulsa **Explorar demostración**. Guarda el PIN y realiza respaldos desde Configuración.
 
@@ -63,7 +63,7 @@ npm run checksums
 - `release/`: salidas de compilación; se ignoran en Git. La copia de entrega del portable y su SHA-256 sí se versionan en `distribucion/windows/`.
 - `test-output/`: perfiles temporales y evidencias de las pruebas; no se publican.
 
-El flujo de GitHub Actions compila en Windows y conserva los ejecutables como artefactos descargables; no crea Releases por sí solo. La publicación y la comprobación de instalación en un Windows real son pasos separados.
+El flujo de GitHub Actions compila en Windows y conserva los ejecutables como artefactos descargables; no crea Releases por sí solo. La instalación interactiva en el equipo de destino sigue siendo una comprobación separada.
 
 ## Asistente y trabajo sin conexión
 
@@ -76,3 +76,11 @@ Consulta [instalación y respaldos](docs/INSTALACION.md), [arquitectura](docs/AR
 Es un espacio local por computadora, con responsable y PIN. No implementa colaboración entre varias computadoras ni administración de cuentas compartidas. Los respaldos sirven para recuperación o traslado a un perfil vacío; no fusionan bases. La aplicación limita cada copia a 75 MB de datos antes del cifrado, por lo que conviene usar imágenes y PDF optimizados.
 
 El recibo es interno; no sustituye comprobantes tributarios. La vista 3D es una aproximación visual de materiales y luz, y no garantiza el color o acabado físico de impresión.
+
+## Comprobación del asistente en la entrega 0.3.1
+
+En Asistente → Más opciones y ayuda → Comprobar modelo local se ejecuta una consulta real. Qwen no está incluido en el `.exe`: instala y abre Ollama y descarga `qwen3.5:4b` una vez en la computadora donde utilizarás Creativa. Después puede trabajar sin internet.
+
+La [validación Windows](https://github.com/milimoon1225-oss/team/actions/runs/40929101751) pasó sobre el commit `c12ba5496a7e738b1002b30641b81afe4a5d611b`. Consulta los [casos y evidencias](docs/VALIDACION-MODELO.md). Los ejecutables distribuidos conservan los hashes de los archivos probados.
+
+Si quieres descargar el `.exe` al clonar el repositorio, instala Git LFS y ejecuta `git lfs install` antes de clonar, o `git lfs pull` después. Las fuentes y su compilación no dependen del ejecutable distribuido.

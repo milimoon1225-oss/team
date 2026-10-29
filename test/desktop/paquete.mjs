@@ -21,7 +21,7 @@ const report={at:new Date().toISOString(),platform:process.platform,executable,r
 let app;
 const portable=/-Portable[.]exe$/i.test(executable);
 async function launch() {
-  if(!portable && process.platform!=='win32')return electron.launch({executablePath:executable,args,env,timeout:60000});
+  if(!portable && process.platform!=='win32' && !process.argv.includes('--cdp'))return electron.launch({executablePath:executable,args,env,timeout:60000});
   await mkdir(profile,{recursive:true});
   for(const name of ['DevToolsActivePort','creativa-autoprueba.json'])await rm(path.join(profile,name),{force:true});
   let logs='',failure;
@@ -57,7 +57,8 @@ try {
   report.app=identity;report.executableSha256=createHash('sha256').update(await readFile(executable)).digest('hex');report.asarSha256=createHash('sha256').update(await readFile(identity.appPath)).digest('hex');
   const page=await app.firstWindow();page.setDefaultTimeout(30000);
   const errors=[];page.on('pageerror',error=>errors.push(error.message));
-  await app.context().setOffline(true); // Sin internet en las pantallas; Ollama se consulta desde el proceso principal.
+  await app.context().route('https://**/*',route=>route.abort());
+  await app.context().route('http://**/*',route=>{const host=new URL(route.request().url()).hostname;return ['127.0.0.1','localhost'].includes(host)?route.continue():route.abort();}); // Bloquea internet y conserva la conexión al servicio local.
   await page.getByRole('heading',{name:'Preparar esta computadora',exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>typeof window.require),'undefined');
   await page.getByLabel('Elige un PIN local (6 a 12 dígitos)').fill('31415926');await page.getByLabel('Repite el PIN').fill('31415926');
@@ -85,6 +86,10 @@ try {
   await page.getByRole('button',{name:'Ver pendientes',exact:true}).click();await page.getByRole('heading',{name:/1 pedido/}).last().waitFor();
   report.checks.push('Paquete real, perfil aislado, sandbox y consulta rápida sin internet');
   if(real) {
+    const runtime=await fetch('http://127.0.0.1:11434/api/version',{signal:AbortSignal.timeout(5000)}).then(r=>r.json());
+    const tags=await fetch('http://127.0.0.1:11434/api/tags',{signal:AbortSignal.timeout(5000)}).then(r=>r.json());
+    const installed=tags.models.find(m=>m.name==='qwen3.5:4b');assert(installed,'El modelo debe estar instalado antes de la prueba.');
+    report.ollama={version:runtime.version,model:installed.name,digest:installed.digest};
     const start=Date.now();
     await page.locator('.a-engine summary').click();await page.getByRole('button',{name:'Comprobar modelo local',exact:true}).click();
     await page.getByText(/Qwen3\.5:4b respondió correctamente/).first().waitFor({timeout:180000});

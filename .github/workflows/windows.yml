@@ -26,13 +26,9 @@ jobs:
       - name: Preparar Ollama y Qwen3.5 de 4B reales
         shell: pwsh
         run: ./scripts/preparar-ollama-windows.ps1
-      - name: Probar el exe empaquetado con el modelo real
-        run: npm run test:package:model
-      - name: Probar el portable distribuible con el modelo real
+      - name: Probar exe y portable con el modelo real
         shell: pwsh
-        run: |
-          $env:CREATIVA_PACKAGED_EXE = (Resolve-Path 'release/Creativa-Operaciones-0.3.1-x64-Portable.exe').Path
-          npm run test:package:model
+        run: ./scripts/probar-modelo-windows.ps1
       - uses: actions/upload-artifact@v4
         with:
           name: Creativa-Operaciones-Windows

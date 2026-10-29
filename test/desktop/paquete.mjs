@@ -67,18 +67,20 @@ try {
   await page.getByLabel('Tipo de trabajo',{exact:true}).fill('Invitación de prueba');
   await page.getByLabel('Precio total (S/)',{exact:true}).fill('25');
   await page.getByRole('button',{name:'Guardar pedido',exact:true}).click();await page.locator('.w-order').first().click();
-  await page.getByRole('button',{name:'Imprimir recibo / PDF',exact:true}).click();
-  const pdfSession=await app.context().newCDPSession(page);
-  const pdf=await pdfSession.send('Page.printToPDF',{printBackground:true});await pdfSession.detach();
-  assert.equal(Buffer.from(pdf.data,'base64').subarray(0,5).toString(),'%PDF-');await writeFile(path.join(output,'recibo.pdf'),Buffer.from(pdf.data,'base64'));
-  await page.getByRole('button',{name:'Cerrar recibo',exact:true}).click();
+  if(app.evaluate) {
+    await page.getByRole('button',{name:'Imprimir recibo / PDF',exact:true}).click();
+    const pdf=await app.evaluate(async({BrowserWindow})=>(await BrowserWindow.getAllWindows()[0].webContents.printToPDF({pageSize:'A4'})).toString('base64'));
+    assert.equal(Buffer.from(pdf,'base64').subarray(0,5).toString(),'%PDF-');await writeFile(path.join(output,'recibo.pdf'),Buffer.from(pdf,'base64'));
+    await page.getByRole('button',{name:'Cerrar recibo',exact:true}).click();
+    report.checks.push('Recibo PDF desde el paquete mediante API nativa');
+  } else report.pdfNote='La impresión PDF se comprueba con la API nativa en Linux; la conexión CDP de Windows no ofrece Page.printToPDF.';
   const dialog=page.getByRole('dialog');await dialog.getByRole('button',{name:'Presentación 3D',exact:true}).click();
   await dialog.getByRole('button',{name:'Cargar diseño de ejemplo',exact:true}).click();
   await dialog.locator('.p3-stage[data-status=ready]').waitFor();
   await dialog.getByRole('button',{name:'Guardar versión 3D',exact:true}).click();
   await dialog.getByLabel('Versión 3D guardada').getByRole('option',{name:/Versión 3D 1/}).waitFor({state:'attached'});
   await page.getByRole('button',{name:'Cerrar pedido',exact:true}).click();
-  report.checks.push('Pedido local, recibo PDF real y versión 3D guardada sin internet');console.log('PASS: pedido, PDF y 3D desde el paquete.');
+  report.checks.push('Pedido local y versión 3D guardada sin internet');console.log('PASS: pedido y 3D desde el paquete.');
   await page.getByRole('button',{name:'Abrir asistente',exact:true}).click();
   await page.getByRole('button',{name:'Ver pendientes',exact:true}).click();await page.getByRole('heading',{name:/1 pedido/}).last().waitFor();
   report.checks.push('Paquete real, perfil aislado, sandbox y consulta rápida sin internet');

@@ -18,10 +18,24 @@
     "portableStartup": "PASS; packaged 0.3.1; isolated profile",
     "portableSha256": "8c8ec8d443539ffb2ea79a62ecc0b2f0fd56b56586a9d7094b8755db1234140b",
     "googleDocs": {
-      "inlineScreenshots": 4,
-      "nativeTables": 1,
-      "exportedPages": 8,
-      "pagesReviewed": true
+      "inlineScreenshots": 11,
+      "nativeTables": 2,
+      "renderedExportReviewed": true
+    },
+    "deliveryPDF": {
+      "file": "docs/GIE-Creativa-Operaciones-Instalacion-APA.pdf",
+      "pages": 19,
+      "pagesReviewed": true,
+      "steps": 14,
+      "realScreenshots": 11,
+      "style": "APA 7 adapted to a technical manual"
+    },
+    "freshSourcePreparation": {
+      "folder": "Creativa-Escritorio",
+      "npmCi": "PASS; 409 packages",
+      "setupDesktop": "PASS; existing Electron 44.8.0 reused",
+      "diagnostics": "PASS; optional Ollama warning",
+      "build": "PASS; 63 modules; dist/index.html"
     }
   },
   "scope": {
@@ -29,5 +43,6 @@
     "interactiveNSISInstallation": "Not performed; portable execution verified"
   },
   "capturesAreReal": true,
-  "screenData": "Fictitious demonstration data only"
+  "screenData": "Fictitious demonstration data only",
+  "captureNotes": "Command screenshots show actual execution logs or identified diagnostic summaries opened in Notepad; they are not terminal-window screenshots."
 }

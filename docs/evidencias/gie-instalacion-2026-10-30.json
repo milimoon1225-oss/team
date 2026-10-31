@@ -27,7 +27,8 @@
       "pages": 19,
       "pagesReviewed": true,
       "steps": 14,
-      "realScreenshots": 11,
+      "realScreenshots": 6,
+      "terminalRecreations": 5,
       "style": "APA 7 adapted to a technical manual"
     },
     "freshSourcePreparation": {
@@ -42,7 +43,14 @@
     "liveAIInference": "Not tested in this local verification; Ollama was not responding",
     "interactiveNSISInstallation": "Not performed; portable execution verified"
   },
-  "capturesAreReal": true,
+  "capturesAreReal": false,
   "screenData": "Fictitious demonstration data only",
-  "captureNotes": "Command screenshots show actual execution logs or identified diagnostic summaries opened in Notepad; they are not terminal-window screenshots."
+  "captureNotes": "Five command figures are visual PowerShell recreations based on verified outputs. Six figures remain real application, Explorer and GitHub screenshots.",
+  "visualEvidence": {
+    "totalFigures": 11,
+    "realScreenshots": 6,
+    "terminalRecreations": 5,
+    "terminalData": "Verified execution outputs; visual recreations are explicitly labeled",
+    "systemOrOtherProjectConfigurationChanges": false
+  }
 }

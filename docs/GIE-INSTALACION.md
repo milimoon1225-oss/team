@@ -20,7 +20,7 @@ Este manual está dirigido a una persona que abre Creativa por primera vez. Para
 
 Ejecuta cada comando por separado y espera a que termine. Debajo de cada paso encontrarás el resultado esperado para decidir si puedes continuar.
 
-Las capturas de comandos muestran registros de ejecuciones reales abiertos en un visor de texto. Las rutas pertenecen al equipo de comprobación; en tu computadora puedes utilizar Documentos\Proyectos. Los nombres de carpetas pueden variar.
+Las figuras de comandos son recreaciones visuales de PowerShell basadas en salidas reales verificadas. Las demás imágenes son capturas reales. Las rutas corresponden a la copia de prueba; puedes utilizar Documentos\Proyectos en tu equipo.
 
 ## Versiones y requisitos
 
@@ -59,7 +59,7 @@ npm.cmd --version
 
 ![Versiones reales de Git, Node.js y npm](capturas-gie/05-versiones-reales.png)
 
-*Nota.* Registro real de las comprobaciones, abierto en Bloc de notas. Las versiones menores de tu equipo pueden variar.
+*Nota.* Recreación visual de PowerShell basada en las versiones verificadas. Las versiones menores de tu equipo pueden variar.
 
 **Resultado esperado.** Git y Node.js responden y npm está disponible.
 
@@ -136,7 +136,7 @@ npm.cmd ci
 
 ![Instalación real de las dependencias](capturas-gie/08-dependencias-reales.png)
 
-*Nota.* Captura del registro real. Se instalaron 409 paquetes y el proceso terminó con código 0. El tiempo puede variar.
+*Nota.* Recreación de PowerShell con un extracto de la salida real. Se instalaron 409 paquetes y el proceso terminó con código 0. El tiempo puede variar.
 
 **Resultado esperado.** Se creó node_modules y no hay un error que impida continuar.
 
@@ -156,7 +156,7 @@ npm.cmd run setup:desktop
 
 ![Comprobación real del motor de escritorio](capturas-gie/09-electron-real.png)
 
-*Nota.* En esta verificación se reutilizó Electron 44.8.0 ya disponible. El comando real terminó con código 0.
+*Nota.* Recreación de PowerShell basada en el registro real. Se reutilizó Electron 44.8.0 disponible y el comando terminó con código 0.
 
 **Resultado esperado.** El motor Electron está disponible para abrir la aplicación.
 
@@ -176,7 +176,7 @@ npm.cmd run diagnostico
 
 ![Diagnóstico real del entorno preparado](capturas-gie/10-diagnostico-real.png)
 
-*Nota.* La captura resume los campos de la salida JSON del mismo diagnóstico. Ollama no respondía en el equipo de verificación.
+*Nota.* Recreación de PowerShell que resume la salida JSON real del diagnóstico. Ollama no respondía en el equipo de verificación.
 
 **Resultado esperado.** El entorno está preparado; los avisos opcionales están identificados.
 
@@ -196,7 +196,7 @@ npm.cmd run build
 
 ![Resultado real de la compilación de la interfaz](capturas-gie/11-compilacion-real.png)
 
-*Nota.* Extracto real del registro. Se transformaron 63 módulos, se generó dist/index.html y el comando terminó con código 0.
+*Nota.* Recreación de PowerShell con un extracto del registro real: 63 módulos, dist/index.html generado y código de salida 0.
 
 **Resultado esperado.** La interfaz compilada está en dist. Este paso también se realiza automáticamente al usar start.
 
@@ -282,7 +282,7 @@ Si utilizas las fuentes, también puedes comprobar una respuesta real desde la r
 npm.cmd run diagnostico -- --modelo
 ```
 
-*Nota.* La IA real no se verificó en esta sesión porque Ollama no respondía. La captura del diagnóstico muestra ese aviso; no se presenta una confirmación simulada.
+*Nota.* La IA real no se verificó porque Ollama no respondía. La figura del diagnóstico recoge ese aviso; no se presenta una confirmación simulada.
 
 **Resultado esperado.** El modelo devuelve una respuesta válida. Tenerlo descargado no sustituye esta comprobación.
 

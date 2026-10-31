@@ -20,7 +20,7 @@ Este manual está dirigido a una persona que abre Creativa por primera vez. Para
 
 Ejecuta cada comando por separado y espera a que termine. Debajo de cada paso encontrarás el resultado esperado para decidir si puedes continuar.
 
-Las figuras de comandos son recreaciones visuales de PowerShell basadas en salidas reales verificadas. Las demás imágenes son capturas reales. Las rutas corresponden a la copia de prueba; puedes utilizar Documentos\Proyectos en tu equipo.
+Las capturas de terminal se tomaron en Git Bash y PowerShell. La figura del diagnóstico es una recreación identificada basada en resultados verificados. Las rutas corresponden a una copia de prueba y pueden variar en tu equipo.
 
 ## Versiones y requisitos
 
@@ -57,9 +57,13 @@ npm.cmd --version
 
 *Versiones reales de Git, Node.js y npm*
 
-![Versiones reales de Git, Node.js y npm](capturas-gie/05-versiones-reales.png)
+![Versiones reales de Git, Node.js y npm](capturas-gie/05a-git-version.png)
 
-*Nota.* Recreación visual de PowerShell basada en las versiones verificadas. Las versiones menores de tu equipo pueden variar.
+![Versiones reales de Git, Node.js y npm](capturas-gie/05b-node-version.png)
+
+![Versiones reales de Git, Node.js y npm](capturas-gie/05c-npm-version.png)
+
+*Nota.* Capturas reales de Git Bash: Git 2.54.0, Node.js 24.16.0 y npm 11.13.0. Las versiones menores de tu equipo pueden variar.
 
 **Resultado esperado.** Git y Node.js responden y npm está disponible.
 
@@ -136,7 +140,7 @@ npm.cmd ci
 
 ![Instalación real de las dependencias](capturas-gie/08-dependencias-reales.png)
 
-*Nota.* Recreación de PowerShell con un extracto de la salida real. Se instalaron 409 paquetes y el proceso terminó con código 0. El tiempo puede variar.
+*Nota.* Captura real de Git Bash. Se instalaron 409 paquetes y se auditaron 410. npm informa 20 vulnerabilidades: 19 moderadas y 1 alta. Estos avisos no deben ocultarse.
 
 **Resultado esperado.** Se creó node_modules y no hay un error que impida continuar.
 
@@ -154,9 +158,11 @@ npm.cmd run setup:desktop
 
 *Comprobación real del motor de escritorio*
 
-![Comprobación real del motor de escritorio](capturas-gie/09-electron-real.png)
+![Comprobación real del motor de escritorio](capturas-gie/09a-preparar-electron.png)
 
-*Nota.* Recreación de PowerShell basada en el registro real. Se reutilizó Electron 44.8.0 disponible y el comando terminó con código 0.
+![Comprobación real del motor de escritorio](capturas-gie/09b-version-electron.png)
+
+*Nota.* Capturas reales: setup:desktop en Git Bash y consulta de la versión en PowerShell. El motor preparado es Electron 44.8.0.
 
 **Resultado esperado.** El motor Electron está disponible para abrir la aplicación.
 
@@ -196,7 +202,7 @@ npm.cmd run build
 
 ![Resultado real de la compilación de la interfaz](capturas-gie/11-compilacion-real.png)
 
-*Nota.* Recreación de PowerShell con un extracto del registro real: 63 módulos, dist/index.html generado y código de salida 0.
+*Nota.* Captura real de PowerShell: 63 módulos transformados y compilación terminada en 390 ms. Se conserva el aviso de archivos que superan 500 kB.
 
 **Resultado esperado.** La interfaz compilada está en dist. Este paso también se realiza automáticamente al usar start.
 

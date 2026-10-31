@@ -18,7 +18,7 @@
     "portableStartup": "PASS; packaged 0.3.1; isolated profile",
     "portableSha256": "8c8ec8d443539ffb2ea79a62ecc0b2f0fd56b56586a9d7094b8755db1234140b",
     "googleDocs": {
-      "inlineScreenshots": 11,
+      "inlineImages": 14,
       "nativeTables": 2,
       "renderedExportReviewed": true
     },
@@ -27,8 +27,8 @@
       "pages": 19,
       "pagesReviewed": true,
       "steps": 14,
-      "realScreenshots": 6,
-      "terminalRecreations": 5,
+      "realScreenshots": 13,
+      "terminalRecreations": 1,
       "style": "APA 7 adapted to a technical manual"
     },
     "freshSourcePreparation": {
@@ -45,12 +45,18 @@
   },
   "capturesAreReal": false,
   "screenData": "Fictitious demonstration data only",
-  "captureNotes": "Five command figures are visual PowerShell recreations based on verified outputs. Six figures remain real application, Explorer and GitHub screenshots.",
+  "captureNotes": "Seven original screenshots supplied by the user replace terminal recreations. Thirteen images are real screenshots; the diagnostic remains one labeled recreation pending its real screenshot.",
   "visualEvidence": {
     "totalFigures": 11,
-    "realScreenshots": 6,
-    "terminalRecreations": 5,
-    "terminalData": "Verified execution outputs; visual recreations are explicitly labeled",
+    "realScreenshots": 13,
+    "terminalRecreations": 1,
+    "userSuppliedScreenshotsUsed": 7,
+    "duplicateOrRedundantScreenshotsOmitted": 3,
+    "dependencyAuditShown": {
+      "total": 20,
+      "moderate": 19,
+      "high": 1
+    },
     "systemOrOtherProjectConfigurationChanges": false
   }
 }

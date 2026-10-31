@@ -4,7 +4,7 @@ Versión 0.3.1 · 30 de octubre de 2026
 
 [PDF con formato basado en APA 7](GIE-Creativa-Operaciones-Instalacion-APA.pdf) · [Google Docs editable](https://docs.google.com/document/d/1v87c63923RGD2fUscBmqyC2Li2NUH-Mc6SKjNAqvxlE)
 
-El PDF tiene portada, índice, 19 páginas numeradas, márgenes de 2,54 cm, Times New Roman de 12 puntos, interlineado doble en el cuerpo y referencias con sangría francesa. Se adapta la presentación de comandos, capturas y tablas para facilitar su lectura.
+El PDF tiene portada, índice, 20 páginas numeradas, márgenes de 2,54 cm, Times New Roman de 12 puntos, interlineado doble en el cuerpo y referencias con sangría francesa. Se adapta la presentación de comandos, capturas y tablas para facilitar su lectura.
 
 ## Contenido y uso del manual
 
@@ -15,6 +15,7 @@ El PDF tiene portada, índice, 19 páginas numeradas, márgenes de 2,54 cm, Time
 - Conservación de datos (p. 17 del PDF)
 - Solución de incidencias (p. 18 del PDF)
 - Referencias (p. 19 del PDF)
+- Descargas y documentación oficial (p. 20 del PDF)
 
 Este manual está dirigido a una persona que abre Creativa por primera vez. Para ejecutar las fuentes, sigue los pasos 1 a 9. Si solo quieres abrir el portable, comienza en el paso 10. La preparación de la IA es opcional.
 
@@ -52,6 +53,8 @@ git --version
 node --version
 npm.cmd --version
 ```
+
+Ayuda oficial: [Descargar Node.js](https://nodejs.org/en/download) · [Instalar Node.js y npm](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) · [Descargar Git](https://git-scm.com/install/windows) · [Instalar Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 **Figura 1**
 
@@ -134,6 +137,8 @@ Test-Path .\package.json
 npm.cmd ci
 ```
 
+Ayuda oficial: [Documentación de npm ci](https://docs.npmjs.com/cli/v11/commands/npm-ci/)
+
 **Figura 5**
 
 *Instalación real de las dependencias*
@@ -153,6 +158,8 @@ npm.cmd ci
 ```powershell
 npm.cmd run setup:desktop
 ```
+
+Ayuda oficial: [Instalación y descargas de Electron](https://www.electronjs.org/docs/latest/tutorial/installation)
 
 **Figura 6**
 
@@ -272,6 +279,8 @@ Como alternativa, con Ollama instalado y abierto, puedes descargar el modelo des
 ollama pull qwen3.5:4b
 ```
 
+Ayuda oficial: [Descargar Ollama](https://ollama.com/download/windows) · [Instalar Ollama en Windows](https://docs.ollama.com/windows)
+
 *Nota.* Ollama requiere Windows 10 22H2 o posterior y espacio adicional para el modelo (Ollama, s. f.). La gestión local de Creativa puede utilizarse sin preparar IA.
 
 **Resultado esperado.** Ollama está abierto y el modelo está descargado. Los pesos, de aproximadamente 3,3 GB, no se incluyen dentro del portable.
@@ -331,8 +340,56 @@ American Psychological Association. (2026). Font. APA Style. https://apastyle.ap
 
 Creativa Impresos. (2026). Creativa Operaciones (versión 0.3.1) [Software]. GitHub. https://github.com/milimoon1225-oss/team/tree/feat/escritorio-local
 
+Electron. (s. f.). Advanced installation instructions. https://www.electronjs.org/docs/latest/tutorial/installation
+
 Git Project. (s. f.). Install for Windows. https://git-scm.com/install/windows
+
+Microsoft. (s. f.). Installing Visual Studio Code on Windows. https://code.visualstudio.com/docs/setup/windows
+
+npm. (s. f.-a). Downloading and installing Node.js and npm. https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/
+
+npm. (s. f.-b). npm-ci. https://docs.npmjs.com/cli/v11/commands/npm-ci/
 
 Ollama. (s. f.). Windows. https://docs.ollama.com/windows
 
 OpenJS Foundation. (s. f.). Download Node.js. https://nodejs.org/en/download
+
+## Descargas y documentación oficial
+
+Consulta estos enlaces si tienes dudas al instalar las herramientas o utilizar la terminal. La preparación de Creativa sigue los comandos y versiones de este manual.
+
+### Node.js y npm
+
+Para ejecutar las fuentes de Creativa, selecciona Node.js 24 LTS.
+
+[Descarga oficial](https://nodejs.org/en/download) · [Guía de instalación](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/)
+
+### Git para Windows
+
+Descarga Git y consulta las instrucciones de instalación de Pro Git.
+
+[Descarga oficial](https://git-scm.com/install/windows) · [Guía de instalación](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+### npm ci
+
+Consulta cómo instalar las dependencias desde package-lock.json.
+
+[Documentación del comando](https://docs.npmjs.com/cli/v11/commands/npm-ci/)
+
+### Visual Studio Code (opcional)
+
+Ayuda para instalar el editor y abrir su terminal integrada.
+
+[Descarga](https://code.visualstudio.com/download) · [Instalación en Windows](https://code.visualstudio.com/docs/setup/windows) · [Terminal integrada](https://code.visualstudio.com/docs/terminal/basics)
+
+### Electron
+
+Referencia del motor. En Creativa utiliza el paso setup:desktop.
+
+[Instalación y descargas](https://www.electronjs.org/docs/latest/tutorial/installation)
+
+### Ollama (IA opcional)
+
+Instrucciones para instalar y utilizar Ollama en Windows.
+
+[Descarga oficial](https://ollama.com/download/windows) · [Guía para Windows](https://docs.ollama.com/windows)

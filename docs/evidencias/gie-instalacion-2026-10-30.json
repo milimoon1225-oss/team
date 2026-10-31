@@ -18,13 +18,14 @@
     "portableStartup": "PASS; packaged 0.3.1; isolated profile",
     "portableSha256": "8c8ec8d443539ffb2ea79a62ecc0b2f0fd56b56586a9d7094b8755db1234140b",
     "googleDocs": {
-      "inlineImages": 14,
+      "inlineImages": 12,
       "nativeTables": 2,
+      "exportedPages": 20,
       "renderedExportReviewed": true
     },
     "deliveryPDF": {
       "file": "docs/GIE-Creativa-Operaciones-Instalacion-APA.pdf",
-      "pages": 19,
+      "pages": 20,
       "pagesReviewed": true,
       "steps": 14,
       "realScreenshots": 14,
@@ -58,5 +59,18 @@
       "high": 1
     },
     "systemOrOtherProjectConfigurationChanges": false
+  },
+  "officialHelpLinks": {
+    "checkedOn": "2026-10-31",
+    "uniqueUrls": 11,
+    "sources": [
+      "nodejs.org",
+      "git-scm.com",
+      "docs.npmjs.com",
+      "code.visualstudio.com",
+      "electronjs.org",
+      "docs.ollama.com",
+      "ollama.com"
+    ]
   }
 }

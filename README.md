@@ -1,5 +1,7 @@
 # Creativa Operaciones
 
+Primera vez con Creativa: [Guía de instalación y primer inicio con capturas reales](docs/GIE-INSTALACION.md).
+
 Aplicación de escritorio para una imprenta: pedidos, producción, diseños y aprobaciones, cobros, caja, costos y reportes. Incluye muestras de invitaciones en 3D y un asistente local opcional.
 
 Los datos de trabajo se guardan cifrados en esta computadora. No necesita una cuenta ni un servidor externo para registrar operaciones. La demostración contiene datos ficticios y se descarta al salir.

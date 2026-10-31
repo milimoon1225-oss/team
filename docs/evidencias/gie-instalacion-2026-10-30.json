@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-30",
+  "application": "Creativa Operaciones",
+  "version": "0.3.1",
+  "sourceBranch": "feat/escritorio-local",
+  "sourceCommit": "bcc18b1f57ebf86f7e1de7d9c430660019d666c3",
+  "documentationBranch": "docs/guia-instalacion-onboarding",
+  "guideUrl": "https://docs.google.com/document/d/1v87c63923RGD2fUscBmqyC2Li2NUH-Mc6SKjNAqvxlE",
+  "checks": {
+    "lint": "PASS",
+    "unitTests": {
+      "passed": 58,
+      "failed": 0
+    },
+    "build": "PASS",
+    "desktopRuntime": "Electron 44.8.0",
+    "sourceStartup": "PASS; isolated profile",
+    "portableStartup": "PASS; packaged 0.3.1; isolated profile",
+    "portableSha256": "8c8ec8d443539ffb2ea79a62ecc0b2f0fd56b56586a9d7094b8755db1234140b",
+    "googleDocs": {
+      "inlineScreenshots": 4,
+      "nativeTables": 1,
+      "exportedPages": 8,
+      "pagesReviewed": true
+    }
+  },
+  "scope": {
+    "liveAIInference": "Not tested in this local verification; Ollama was not responding",
+    "interactiveNSISInstallation": "Not performed; portable execution verified"
+  },
+  "capturesAreReal": true,
+  "screenData": "Fictitious demonstration data only"
+}

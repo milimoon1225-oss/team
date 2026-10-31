@@ -19,13 +19,15 @@
     "portableSha256": "8c8ec8d443539ffb2ea79a62ecc0b2f0fd56b56586a9d7094b8755db1234140b",
     "googleDocs": {
       "inlineImages": 12,
-      "nativeTables": 2,
-      "exportedPages": 20,
+      "nativeTables": 5,
+      "dataTables": 2,
+      "navigationTables": 3,
+      "exportedPages": 22,
       "renderedExportReviewed": true
     },
     "deliveryPDF": {
       "file": "docs/GIE-Creativa-Operaciones-Instalacion-APA.pdf",
-      "pages": 20,
+      "pages": 22,
       "pagesReviewed": true,
       "steps": 14,
       "realScreenshots": 14,
@@ -72,5 +74,15 @@
       "docs.ollama.com",
       "ollama.com"
     ]
+  },
+  "layoutReview": {
+    "date": "2026-10-31",
+    "reference": "User supplied installation manual PDF",
+    "contents": "24 entries with section hierarchy, dot leaders and right aligned page numbers",
+    "figureIndex": 11,
+    "tableIndex": 2,
+    "readingInstructions": "Separate page",
+    "tableFormatting": "12 pt Times New Roman; centered column headings; horizontal rules only",
+    "paginationMatchesContents": true
   }
 }

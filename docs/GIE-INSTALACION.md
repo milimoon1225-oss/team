@@ -4,18 +4,59 @@ Versión 0.3.1 · 30 de octubre de 2026
 
 [PDF con formato basado en APA 7](GIE-Creativa-Operaciones-Instalacion-APA.pdf) · [Google Docs editable](https://docs.google.com/document/d/1v87c63923RGD2fUscBmqyC2Li2NUH-Mc6SKjNAqvxlE)
 
-El PDF tiene portada, índice, 20 páginas numeradas, márgenes de 2,54 cm, Times New Roman de 12 puntos, interlineado doble en el cuerpo y referencias con sangría francesa. Se adapta la presentación de comandos, capturas y tablas para facilitar su lectura.
+El PDF tiene portada, índice, 22 páginas numeradas, márgenes de 2,54 cm, Times New Roman de 12 puntos, interlineado doble en el cuerpo y referencias con sangría francesa. Se adapta la presentación de comandos, capturas y tablas para facilitar su lectura.
 
-## Contenido y uso del manual
+## Contenido
 
-- Versiones y requisitos (p. 3 del PDF)
-- Preparación y ejecución desde GitHub (p. 4 del PDF)
-- Ejecución del portable (p. 13 del PDF)
-- Preparación opcional de la IA (p. 15 del PDF)
-- Conservación de datos (p. 17 del PDF)
-- Solución de incidencias (p. 18 del PDF)
-- Referencias (p. 19 del PDF)
-- Descargas y documentación oficial (p. 20 del PDF)
+| Contenido | Página |
+| --- | ---: |
+| Índice de figuras y tablas | 3 |
+| Cómo utilizar este manual | 4 |
+| Versiones y requisitos | 5 |
+| Preparación y ejecución desde GitHub | 6 |
+| ↳ Paso 1. Preparar Git y Node.js | 6 |
+| ↳ Paso 2. Elegir la rama correcta en GitHub | 7 |
+| ↳ Paso 3. Elegir una carpeta y clonar el proyecto | 8 |
+| ↳ Paso 4. Entrar en la raíz del proyecto | 9 |
+| ↳ Paso 5. Instalar las dependencias | 10 |
+| ↳ Paso 6. Preparar el motor Electron | 11 |
+| ↳ Paso 7. Revisar el diagnóstico | 12 |
+| ↳ Paso 8. Reconocer una compilación correcta | 13 |
+| ↳ Paso 9. Abrir Creativa desde las fuentes | 14 |
+| Ejecución del portable | 15 |
+| ↳ Paso 10. Descargar el ejecutable oficial | 15 |
+| ↳ Paso 11. Primer inicio: prueba o trabajo permanente | 16 |
+| Preparación opcional de la IA | 17 |
+| ↳ Paso 12. Preparar la IA local, si la vas a utilizar | 17 |
+| ↳ Paso 13. Comprobar una respuesta real del modelo | 18 |
+| Conservación de datos | 19 |
+| ↳ Paso 14. Conservar los datos y cerrar el trabajo | 19 |
+| Solución de incidencias | 20 |
+| Referencias | 21 |
+| Descargas y documentación oficial | 22 |
+
+## Índice de figuras y tablas
+
+| Contenido | Página |
+| --- | ---: |
+| Figura 1. Versiones reales de Git, Node.js y npm | 6 |
+| Figura 2. Rama feat/escritorio-local del repositorio | 7 |
+| Figura 3. Carpeta del proyecto después de la descarga | 8 |
+| Figura 4. Archivos que identifican la raíz del proyecto | 9 |
+| Figura 5. Instalación real de las dependencias | 10 |
+| Figura 6. Comprobación real del motor de escritorio | 11 |
+| Figura 7. Diagnóstico real del entorno preparado | 12 |
+| Figura 8. Resultado real de la compilación de la interfaz | 13 |
+| Figura 9. Creativa abierta con datos de demostración | 14 |
+| Figura 10. Archivos de la publicación oficial de Creativa | 15 |
+| Figura 11. Opciones reales del primer inicio de Creativa | 16 |
+
+| Contenido | Página |
+| --- | ---: |
+| Tabla 1. Componentes necesarios según el modo de ejecución | 5 |
+| Tabla 2. Incidencias habituales y acciones de recuperación | 20 |
+
+## Cómo utilizar este manual
 
 Este manual está dirigido a una persona que abre Creativa por primera vez. Para ejecutar las fuentes, sigue los pasos 1 a 9. Si solo quieres abrir el portable, comienza en el paso 10. La preparación de la IA es opcional.
 

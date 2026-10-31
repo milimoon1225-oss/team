@@ -20,7 +20,7 @@ Este manual está dirigido a una persona que abre Creativa por primera vez. Para
 
 Ejecuta cada comando por separado y espera a que termine. Debajo de cada paso encontrarás el resultado esperado para decidir si puedes continuar.
 
-Las capturas de terminal se tomaron en Git Bash y PowerShell. La figura del diagnóstico es una recreación identificada basada en resultados verificados. Las rutas corresponden a una copia de prueba y pueden variar en tu equipo.
+Todas las figuras contienen capturas reales. Las capturas de terminal se tomaron en Git Bash y PowerShell. Las rutas corresponden a una copia de prueba y pueden variar en tu equipo.
 
 ## Versiones y requisitos
 
@@ -182,7 +182,7 @@ npm.cmd run diagnostico
 
 ![Diagnóstico real del entorno preparado](capturas-gie/10-diagnostico-real.png)
 
-*Nota.* Recreación de PowerShell que resume la salida JSON real del diagnóstico. Ollama no respondía en el equipo de verificación.
+*Nota.* Captura real de Git Bash. La base de desarrollo está preparada. Se conservan los avisos del puntero Git LFS y de Ollama sin conexión; no impiden compilar las fuentes ni utilizar la gestión local.
 
 **Resultado esperado.** El entorno está preparado; los avisos opcionales están identificados.
 

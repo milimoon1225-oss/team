@@ -27,8 +27,8 @@
       "pages": 19,
       "pagesReviewed": true,
       "steps": 14,
-      "realScreenshots": 13,
-      "terminalRecreations": 1,
+      "realScreenshots": 14,
+      "terminalRecreations": 0,
       "style": "APA 7 adapted to a technical manual"
     },
     "freshSourcePreparation": {
@@ -43,14 +43,14 @@
     "liveAIInference": "Not tested in this local verification; Ollama was not responding",
     "interactiveNSISInstallation": "Not performed; portable execution verified"
   },
-  "capturesAreReal": false,
+  "capturesAreReal": true,
   "screenData": "Fictitious demonstration data only",
-  "captureNotes": "Seven original screenshots supplied by the user replace terminal recreations. Thirteen images are real screenshots; the diagnostic remains one labeled recreation pending its real screenshot.",
+  "captureNotes": "All fourteen images are real screenshots. Eight original terminal screenshots were supplied by the user; no terminal recreations remain.",
   "visualEvidence": {
     "totalFigures": 11,
-    "realScreenshots": 13,
-    "terminalRecreations": 1,
-    "userSuppliedScreenshotsUsed": 7,
+    "realScreenshots": 14,
+    "terminalRecreations": 0,
+    "userSuppliedScreenshotsUsed": 8,
     "duplicateOrRedundantScreenshotsOmitted": 3,
     "dependencyAuditShown": {
       "total": 20,
